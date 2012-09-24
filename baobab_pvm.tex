@@ -1,0 +1,1369 @@
+\documentclass[preprint]{aastex}
+\usepackage{amsmath}
+
+\def\pvm#1{[PM: {\it #1}] }
+
+\title{The Baryon Acoustic Oscillation Broadband and Broad-beam Array: Design Overview and Sensitivity Forecasts}
+\author{Jonathan C. Pober\altaffilmark{1}, 
+Aaron R. Parsons\altaffilmark{1}, 
+David R. DeBoer\altaffilmark{2},
+Patrick McDonald\altaffilmark{3},
+Matthew McQuinn\altaffilmark{1,4},
+James E. Aguirre\altaffilmark{5},
+Zaki Ali\altaffilmark{1},
+Richard F. Bradley\altaffilmark{6,7},
+Tzu-Ching Chang\altaffilmark{8},
+Miguel F. Morales\altaffilmark{9}
+}
+
+\altaffiltext{1}{Astronomy Dept., U. of California, Berkeley, CA}
+\altaffiltext{2}{Radio Astronomy Laboratory, U. of California, Berkeley, CA}
+\altaffiltext{3}{Physics Div., Lawrence Berkeley National Laboratory, Berkeley, CA}
+\altaffiltext{4}{Einstein Fellow}
+\altaffiltext{5}{Dept. of Physics and Astronomy, U. of Pennsylvania, Philadelphia, PA}
+\altaffiltext{6}{Astronomy Dept. and Dept. of Electrical and Computer Engineering, U. of Virginia, Charlottesville, VA}
+\altaffiltext{7}{National Radio Astronomy Observatory, Charlottesville, VA}
+\altaffiltext{8}{Institute of Astronomy and Astrophysics, Academia Sinica, Taipei, Taiwan}
+\altaffiltext{9}{Dept. of Physics, U. of Washington, Seattle, WA}
+
+\begin{abstract}
+This work describes a new instrument optimized for a detection of
+the neutral hydrogen 21cm power spectrum between redshifts of $0.5-1.5$: the 
+Baryon Acoustic Oscillation Broadband and Broad-beam (BAOBAB) Array.  
+BAOBAB will build on the efforts of a first generation of 21cm experiments
+which are targeting a detection of the signal from the Epoch of Reionization at $z\sim10$.  
+At $z\sim1$, the emission from neutral hydrogen 
+in self-shielded overdense halos also presents an accessible signal, 
+since the dominant, synchrotron foreground emission is considerably fainter
+than at redshift 10.  The principle science driver for these observations are
+Baryon Acoustic Oscillations in the matter power spectrum
+which have the potential to act as a standard ruler and constrain the nature of dark energy.
+BAOBAB will fully correlate
+dual-polarization antenna tiles over the 600--900MHz band with a frequency resolution of 
+300 kHz and a system temperature of 50K.  The number of antennas will grow in 
+staged deployments, and reconfigurations of the array
+will allow for both traditional imaging and high power spectrum sensitivity operations.  We present
+calculations of the power spectrum sensitivity for various array sizes, 
+with a 35-element array measuring the cosmic neutral hydrogen 
+fraction as a function of redshift, 
+and a 132-element system detecting the BAO features in the power spectrum,
+yielding errors on $H(z)$ at the several percent level and, in turn, significant
+improvements to constraints on the dark energy equation of state over an
+unprecedented range of redshifts from $\sim~0.5-1.5$.
+\end{abstract}
+
+\keywords{instrumentation: interferometers --- cosmological parameters --- distance scale --- techniques: interferometric --- large-scale structure of the universe}
+
+\begin{document}
+
+\section{Introduction}
+
+The Baryon Acoustic Oscillation (BAO) features in the large-scale
+matter distribution have recently drawn attention as a standard ruler
+by which the geometry of the universe can be directly measured 
+\citep{eisenstein_et_al_1998,eisenstein_et_al_1999}.
+These features in the cosmic microwave background (CMB)
+power spectrum and the matter power spectrum today are
+imprints from the acoustic oscillations in the primordial photon-baryon plasma
+that recombined at $z\approx1100$. The features in the power spectrum
+appear at multiples of the
+the sound horizon scale at recombination, making them effective 
+standard rulers.  Measuring the BAO wiggles at several
+redshifts yields geometric measurements of the universe --- the Hubble
+parameter, $H(z)$, and the angular diameter distance, $d_A(z)$ --- that
+constrain properties of the dark energy that dominates the cosmic energy
+content at $z=0$ and is the current leading theory for the accelerated expansion
+of the universe.  Since the first detection of the BAO signal
+\citep{eisenstein_et_al_2005}, several experiments have been undertaken
+to use these features for precision cosmology, including the Sloan
+Digital Sky Survey III Baryon Oscillation Spectroscopic Survey
+(SDSS-III BOSS;
+\citealt{schlegel_et_al_2009})\footnote{http://www.sdss3.org/surveys/boss.php/},
+WiggleZ
+\citep{drinkwater_et_al_2010}\footnote{http://wigglez.swin.edu.au/site/},
+and the Hobby-Eberly Telescope Dark Energy Experiment
+(HETDEX; \citealt{adams_et_al_2011})\footnote{http://hetdex.org/},
+as well as a number of planned future experiments, such as the
+Subaru Prime Focus Spectrograph (PFS; \citealt{ellis_et_al_2012}),
+Euclid \citep{amendola_et_al_2012}, BigBOSS \citep{schlegel_et_al_2011},
+and the Wide-Field Infrared Survey Telescope (WFIRST)\footnote{http://wfirst.gsfc.nasa.gov/}.
+All of these experiments target individual galaxies with spectroscopic
+observations.
+
+Rather than targeting individual objects, a 21cm intensity mapping
+experiment can detect fluctuations in neutral hydrogen emission on large scales
+\citep{chang_et_al_2008,wyithe_et_al_2008,morales_and_wyithe_2010,pritchard_and_loeb_2011},
+with two dimensions corresponding to angles
+on the sky, and the third line-of-sight dimension arising from the differential 
+redshifting of 21cm line emission as a function of distance.
+After reionization, the power spectrum of 21cm fluctuations is expected to be a biased tracer of the matter power-spectrum,
+since the remaining neutral hydrogen resides in
+high-density, self-shielded regions such as in galaxies and other collapsed halos
+\citep{barkana_and_loeb_2007,madau_et_al_1997}.  As a result, 
+21cm intensity mapping experiments
+present a promising complement to spectroscopic galaxy surveys
+for BAO science.  Several 21cm intensity mapping experiments have been proposed,
+including the prototype Cylindrical Radio Telescope (CRT; formerly HSHS, 
+\citealt{peterson_et_al_2006}; \citealt{seo_et_al_2010})\footnote{\url{http://cmb.physics.wisc.edu/people/lewis/webpage/}},
+the Canadian Hydrogen Intensity Mapping Experiment (CHIME)\footnote{http://www.mcgillcosmology.ca/chime},
+BAORadio \citep{ansari_et_al_2012}, and an ongoing experiment with the Green Bank
+Telescope (GBT; \citealt{chang_et_al_2010}).  
+
+The flexibility in angular and spectral responses of radio interferometers,
+which measure the power spectrum both parallel and perpendicular to
+the line of sight \citep{morales_2005},
+gives 21cm BAO the ability to survey larger cosmological volumes and operate over
+a wider range of redshifts than current spectroscopic galaxy redshift surveys.
+As a result, the 21cm BAO signal has the potential for probing expansion throughout
+and beyond
+the critical epoch when dark energy comes to dominate the energy density of the
+universe.
+Furthermore, a 21cm intensity mapping experiment can probe redshifts $z > 0.5$ 
+with roughly uniform sensitivity,
+without complications arising from sky emission lines in the optical/near-infrared.
+%\pvm{the following about non-linear effect isn't quantitatively true, and I 
+% don't know in what sense there are "three principal BAO peaks".}
+%On the largest physical scales ($k<0.25~h{\rm Mpc}^{-1}$ at $z\sim 1$) where BAO
+%features in the matter power spectrum have not been significantly modified by
+%non-linear growth, the 21cm signal can be used to constrain the location of the
+%three principal BAO peaks as a function of redshift, and thereby measure
+%the magnitude and time-evolution of dark energy.
+
+21cm BAO experiments can draw on the considerable investments in
+low-frequency radio astronomy developed in the past decade for studies of
+the Epoch of Reionization (EoR).
+In this paper, we present the Baryon Acoustic Oscillation Broadband and Broad-beam (BAOBAB)
+array, a new experiment, building on the legacy of the Precision Array for Probing
+the Epoch of Reionization (PAPER; \citealt{parsons_et_al_2010})\footnote{http://eor.berkeley.edu/} and the Murchison Widefield 
+Array (MWA; \citealt{lonsdale_et_al_2009})\footnote{http://www.mwatelescope.org/}, 
+for measuring the 21cm HI power spectrum at a redshift of $z\sim1$.
+This paper is structured as follows: in \S\ref{sec:baobab}, 
+we present a system architecture for the BAOBAB instrument.
+In \S\ref{sec:predictions}, we forecast the sensitivity and cosmological
+constraints that will be achieved by BAOBAB.
+We consider several possible challenges for this approach in \S\ref{sec:discussion}, 
+and conclude in \S\ref{sec:conclusions}.  Throughout this work 
+we assume the WMAP7 best fit $\Lambda$CDM cosmological model:
+$h = 0.7$, $\Omega_M = 0.27$, $\Omega_b = 0.046$, $\Omega_{DE} = 0.73$, and $\sigma_8 = 0.8$. 
+\citep{larson_et_al_2011}.
+
+\section{The BAO Broadband and Broad-beam Array}
+\label{sec:baobab}
+
+The past decade has seen significant progress in the design, construction,
+and calibration of low-frequency interferometric arrays toward the goal
+of detecting the highly-redshifted 21cm signal from the Epoch of Reionization.
+The technologies used in BAOBAB inherit from two EoR experiments ---
+PAPER and the MWA --- but with several significant modifications to optimize the instrument
+for BAO science.  The entire signal chain will be re-tuned to operate between 
+600--900~MHz.  These frequencies corresponds to redshifted 21cm emission between $z = 0.58-1.37$,
+a band chosen for several reasons.  First, these moderate redshifts complement the undergoing lower
+redshift galaxy surveys like BOSS by probing what is currently a relatively unexplored volume of the universe.
+Secondly, at these frequencies, commercially available amplifiers and cables provide suitable
+low-noise performance that would not be obtainable at higher frequencies (lower redshifts).  
+Furthermore, this band also avoids the bright sky noise and ionospheric effects that complicate
+lower frequency (higher redshift) observations. 
+
+BAOBAB will be a non-phase-tracking, broadband array of beam-formed tiles.
+By lowering the field-of-view of each element,  
+the use of beamformed tiles like the MWA will significantly increase BAOBAB's power spectrum sensitivity
+over an array of single dipoles, without increasing the correlator demands.
+Each tile will consist of 4 scaled versions of the PAPER sleeved-dipole design 
+and groundscreens, electronically beamformed to point to zenith.
+Two linear polarization signals
+from each tile enter a digital signal processor that computes both auto-
+and cross-correlation products and outputs the results locally to disk.
+A block diagram is given in Fig. \ref{fig:signal_flow}; 
+the key properties of the BAOBAB system are listed in Table \ref{tab:baobab}
+and are described in more detail below.
+
+\begin{table}[ht]
+\caption{Proposed BAOBAB Array}
+\begin{tabular}{l|l}
+\hline\hline
+Operating Bandwidth & 600--900 MHz \\
+Number of Tiles & 32--128 \\
+Collecting Area per Element & 2.6 $\rm{m}^2$ \\
+Gain per Element & 18 dBi \\
+Field-of-View & 0.045 str \\
+Receiver Noise Temperature & 40 K \\
+System Temperature & 50 K\\
+Maximum Imaging Baseline & 60 m\\
+Redundant East-West Baseline Scale & 1.6 m\\
+$k_{\rm min}$, $k_{\rm max}$ & 0.01, 2.5~$h{\rm Mpc}^{-1}$\\ 
+Array Configuration & Reconfigurable: Min/Max-Redundancy (see Figure \ref{fig:configuration})\\
+Frequency Resolution & 300 kHz\\
+Snapshot Integration Time & 10 s\\
+\hline
+\end{tabular}
+\label{tab:baobab}
+\end{table}
+
+Since radio-frequency interference (RFI) is prevalent at these frequencies,
+BAOBAB will need to be located at a radio quiet site.  The right
+panel of Figure \ref{fig:leuschner} shows preliminary measurements made by a
+prototype 2-antenna BAOBAB interferometer deployed at the Leuschner Observatory
+near Berkeley, CA.  At this site, only 40 MHz of a 400--800 MHz operating band
+show solar fringes uncorrupted by RFI, demonstrating the need for the primary
+BAOBAB deployment to be located 
+at a quieter site, such as the NRAO site near Green Bank, WV.  
+Next-generation activities may
+take place at the Square Kilometer Array South Africa
+(SKA-SA) reserve in the Karoo desert.  This site is currently
+occupied by the PAPER and MeerKAT arrays, and has been shown to be a pristine RFI
+environment \citep{jacobs_et_al_2011}.
+
+With the drastic reduction in sky noise relative to EoR frequencies, BAOBAB's system temperature
+will be dominated by the analog electronics.
+These components must therefore be optimized to reduce
+receiver noise
+while maintaining the
+smooth spatial and spectral responses that are a hallmark of the PAPER design
+and a key component of the delay spectrum foreground isolation approach presented in 
+\citet{parsons_et_al_2012b} (hereafter P12b) and discussed in \S\ref{sec:dspec}.
+The analog system will include the collecting element (consisting of 4 antennas and 
+reflectors), low-noise amplifier, coaxial cable, and receiver.
+
+The BAOBAB element will begin with a 1/5-scale PAPER antenna
+\citep{parsons_et_al_2010}, as shown in Figure \ref{fig:element}.  This design
+is a dual-polarized version of the sleeved dipole design that uses a
+twin-resonance structure consisting of a pair of crossed dipoles located
+between a pair of thin aluminum disks.
+The element's
+reliability has been demonstrated in PAPER arrays over the past several years.
+A trough reflector under each dipole will be used to increase the directivity
+toward zenith.  The electromagnetic behavior of the element was modeled extensively for
+PAPER using CST Microwave Studio,
+and shown to perform as desired through calibration with celestial sources in
+\cite{pober_et_al_2012}.  The geometrically re-tuned prototype shown in the
+left panel of Figure \ref{fig:element}
+will be optimized to operate efficiently over the 600--900 MHz band.
+
+Rather than deploy single elements like PAPER, BAOBAB will use a $2\times2$ tile
+of dipoles and ground-screens, as shown in Figure \ref{fig:element}.  A fixed zenith beamformer 
+will be used to combine the signals, increasing the gain by 6 dB and reducing the 
+field-of-view by a factor of four.  Both analog and digital beamformers are being investigated.  
+A key issue is the mutual coupling, which should be reduced by the additional groundscreens between 
+dipoles.  The net effect is that for a fixed correlator size, the power-spectrum
+sensitivity is increased by a factor of four.
+
+The amplifier designed for PAPER has a measured noise
+temperature of 110 K with 30 dB of gain across the 120-170 MHz band \citep{parsons_et_al_2010}.
+For application to BAO at $z\sim1$, we will modify this amplifier design to
+operate from 600--900 MHz.  Besides re-tuning filter and amplifier
+circuits, however, one of the major activities in this modification will be
+to reduce the noise temperature of the front-end amplifier in order to 
+obtain a target system temperature of 50~K.
+This change reflects one of the key differences between the BAO and
+EoR foregrounds. System noise in the EoR band is dominated by $\sim\!\!300$ K sky noise
+from galactic synchrotron emission.  In the BAO band, the sky temperature is reduced
+to $\sim\!\!10$ K, making the front-end amplifier the leading source of noise.
+Uncooled commercial UHF-band amplifier transistors based on GasFET or HEMT technology can
+reliably achieve noise figures of 0.4 dB, corresponding to a receiver temperature of 30K.
+A prototype BAOBAB balun/amplifier using a Hittite HMC617LP3 LNA with a quoted noise 
+figure of 0.5 dB is shown in Figure \ref{fig:balun_rx}; tests are underway to determine
+the noise temperature of the complete system.
+
+The BAOBAB correlator will follow the 
+scalable correlator design used by PAPER and
+other members of the international Collaboration for Astronomy Signal
+Processing and Electronics Research (CASPER)\footnote{https://casper.berkeley.edu}, a real-time digital correlator
+based on Field-Programmable Gate Array (FPGA) processors and graphics processing units (GPUs)
+\citep{parsons_et_al_2008,clark_et_al_2011}.
+The correlator architecture we employ uses modular
+signal processing electronics and packetized communication protocols to
+build correlators that are flexible in the number of antennas correlated and
+the bandwidth correlated by each antenna.
+A photograph of a 128-input FPGA/GPU correlator is shown in Fig. \ref{fig:correlator}.
+
+The generic FX correlator architecture we implement consists of
+modules responsible for digitizing and
+channelizing each set of antenna inputs (F-Engines), followed by a set
+of signal processing modules responsible for cross-multiplying all
+antennas and polarizations for a single frequency (X-Engines) and
+accumulating the results. 
+Unique to this architecture, 
+signal processing engines transmit packetized data through
+commercially available 10 Gb Ethernet switches
+that are responsible for routing data between boards.  This
+architecture, along with analog-to-digital converters, modular
+FPGA-based signal processing engines, and a software environment for
+programming, debugging, and running them, were developed in
+collaboration with CASPER at the University of California, Berkeley \citep{parsons_et_al_2008}.  
+The flexibility and modularity of this correlator design
+shortens development time, and in this case, allows an existing 64-input, 100-MHz
+PAPER correlator with 8 ROACH-boards and 4 dual-GPU boxes
+to be straight-forwardly modified to become a 32-input, 300-MHz BAOBAB correlator
+using the same boards and signal processing libraries.  A forthcoming publication
+on this correlator will be presented in Ali et al. (2013).
+  
+BAOBAB will employ small antennas and above-ground cabling with relatively inexpensive 
+LMR400 50-Ohm coaxial cables; these cables will not be buried, allowing BAOBAB
+to easily change between different array configurations by moving antenna elements.
+Following the principles outlined in
+(\citealt{parsons_et_al_2012a}, hereafter P12a), BAOBAB will employ a minimum-redundancy imaging 
+configurations for characterizing foregrounds with minimal sidelobes
+and maximum-redundancy configurations to repeatedly
+sample the same locations in the uv-plane, substantially improving sensitivity
+to the three-dimensional power spectrum of 21cm emission at $z\sim1$.
+Although future experiments may target a range of angular scales to map 21cm emission
+in the plane of the sky, by focusing on a limited number of Fourier modes, these
+maximum-redundancy configurations can improve sensitivity to the
+power spectrum by an order of magnitude or more in mK$^2$, relative to an
+equivalent observation with a minimum-redundancy configuration.
+
+However, as will be discussed further in \S\ref{sec:thermal_noise}, the mapping of
+baseline lengths to a transverse $k$-mode of the sky is significantly larger for BAOBAB
+than for PAPER.  In order to probe the relatively large-scale BAO features, then, BAOBAB will
+use the most compact configurations possible for its power spectrum measurements.
+Such an array configuration for a 35-element system, as well as that of a 32-element 
+imaging configuration, 
+are shown in Figure \ref{fig:configuration}.  The tiles are spaced 1.6m apart, effectively touching 
+end-to-end.  Investigations of cross-talk and mutual coupling will take place during an early
+prototype of the system; it may be the case that a phase-switch or additional shielding between
+tiles will be necessary to accommodate the short baselines required by BAO science.
+
+With a modular CASPER correlator increasingly able to process larger numbers of antenna inputs, 
+BAOBAB naturally lends itself to a staged approach.  Early $\leq 16$ tile-element prototypes 
+will characterize system performance, while a subsequent
+$\sim32$-element array will study foreground emission and 
+constrain the neutral hydrogen fraction as a function of redshift 
+with a measurement of the 21cm power
+spectrum (\S\ref{sec:baobab32}).  A $\sim128$-tile version of BAOBAB 
+will measure BAO features and provide substantial improvements over our current
+constraints on the equation of state and time evolution of dark energy (\S\ref{sec:baobab128}). 
+
+\section{Predicted Cosmological Constraints from BAOBAB}
+\label{sec:predictions}
+
+In this section we present predictions for forthcoming cosmological constraints for
+several iterations of the BAOBAB instrument.  We begin by reviewing the predicted
+signal strength for the cosmological 21cm power spectrum in \S\ref{sec:ps21}.
+In \S\ref{sec:sensitivity}, we adapt the power spectrum sensitivity calculations of 
+P12a for an array operating at $z\sim 1$, including the effects of sample variance
+and shot noise.  In \ref{sec:dspec}, we briefly review the delay spectrum
+foreground removal procedure of P12b.
+While a detailed study of foregrounds is beyond the scope of this paper,
+it is worthwhile to discuss the implications of the technique on which
+Fourier modes of the 21cm power spectrum will be accessible.
+We conclude the section by presenting forecasts for a 35- and 132-element BAOBAB
+system in \S\ref{sec:baobab32}, \S\ref{sec:baobab128}
+respectively, including Fisher matrix predictions for constraints on the dark energy 
+equation of state in the latter two sections.  In the discussion of \S\ref{sec:discussion},
+we explore possible improvements with larger BAOBAB arrays.
+
+\subsection{The 21cm Power Spectrum}
+\label{sec:ps21}
+
+As with galaxy redshift surveys, a 3D map of the neutral hydrogen in the universe
+will serve as a tracer of the underlying dark matter power spectrum.  The brightness 
+of the observable radio 21cm signal will depend on the cosmological neutral hydrogen
+fraction, as well as the bias of hydrogen containing haloes with respect to the dark matter
+\citep{barkana_and_loeb_2007,madau_et_al_1997,ansari_et_al_2012}:
+\begin{eqnarray}
+    \label{eq:pred_sig_b}
+    P_{T_{21}}(k,z) &= &\left[\tilde T_{21}(z)\right]^2 b^2 P(k,z),\\
+    \label{eq:pred_sig_fhi}
+    \tilde T_{21}(z) &\simeq &0.084 {\rm mK} \frac{(1+z)^2 h}{\sqrt{\Omega_m(1+z)^3+\Omega_\Lambda}}
+        \frac{\Omega_B}{0.044}\frac{f_{\rm{HI}}(z)}{0.01},
+\end{eqnarray}
+where $\tilde T_{21}(z)$ is the mean 21cm brightness temperature at
+redshift $z$; $P(k,z)$ is the linear matter power spectrum; $b$ is the
+bias factor of HI containing halos with respect to the dark matter;
+$f_{\mathrm{HI}}(z)$ is the mass fraction of neutral hydrogen with
+respect to the overall cosmological baryon content (i.e., $\Omega_{\rm{HI}} = f\Omega_b$); $\Omega_\Lambda$
+is the cosmological constant, and $\Omega_m$ and $\Omega_B$ are the
+matter and baryon density in units of the critical density,
+respectively.
+
+We plot the predicted 21cm 
+line-of-sight mode brightness temperature power spectrum, $P(k)$, for our fiducial model 
+at redshifts of 0.67, 0.89 and 1.18 (corresponding to frequencies of 850,
+750, and 650 MHz, respectively) in Figure \ref{fig:21cmps}.  Predictions for the matter power spectrum
+come from CAMB \citep{lewis_et_al_2000}\footnote{http://camb.info/}.  
+We also plot the dimensionless power
+spectrum, $\Delta^2(k) = \frac{k^3}{2\pi^2}P(k)$.  For the remainder of this paper
+will we primarily express our results in terms of $\Delta_{\rm{T_{21}}}^2(k)$, due to its more
+intuitive units (mK$^2$) and simple physical interpretation as the variance
+per logarithmic $k$ bin.
+
+In practice, the 21cm power spectrum is measured in
+redshift space, which can be, at linear order, related to the real-space
+$P_{T_{21}}(k,z)$ as \citep{kaiser_1987}:
+\begin{equation}
+\tilde{P}_{T_{21}}(k,z)=(1 + \beta \mu^2)^2 P_{T_{21}}(k,z)
+\end{equation}
+where $\mu = \hat{k} \cdot \hat{z}$ is the wavevector $\hat{k}$
+projected along the line-of-sight $\hat{z}$, and $\beta \equiv f(\Omega)/b$ from
+linear theory where $f(\Omega) \approx \Omega_m(z)^{\gamma}$ is the
+dimensionless linear growth rate and $\gamma=0.557$ for $\Lambda$CDM
+cosmologies.  To incorporate the effects of redshift-space distortions in the following
+calculations, we reduce our thermal noise error bars in $k$-space by the factor of $(1+\beta\mu^2)^2$;
+however, we do not attempt to constrain cosmological parameters like $\beta$ by measuring the power
+spectrum as a function of $/mu$.  
+We assume fiducial values of $f_{\rm{HI}}$ =
+0.015 and $b$ = 0.75, chosen to agree with $f_{\rm{HI}}b~=~0.012~\pm~0.003$ as measured by \citet{chang_et_al_2010}.  To obtain individual constraints on these parameters, one will need to measure
+redshift-space distortions themselves.
+
+\subsection{Sensitivity of an Array to the 21cm Signal}
+\label{sec:sensitivity}
+
+There are three independent sources of statistical uncertainty in a 21cm power spectrum measurement: thermal
+noise in the interferometric measurements, sample variance, and shot noise, of which the last is in some
+sense ``signal," but still inhibits measurements of cosmological parameters.
+For the first-generation of 21cm experiments, thermal noise will be the dominant source of
+uncertainty in measurements of the power spectrum.  We therefore calculate the effects
+of thermal noise independently in \S\ref{sec:thermal_noise}.  We add in the effects of sample
+variance in \S\ref{sec:sample_variance} and argue in \S\ref{sec:shot_noise} that shot noise
+can be neglected for these experiments.
+
+\subsubsection{Thermal Noise}
+\label{sec:thermal_noise}
+Thermal noise, in addition to being the dominant source of uncertainty in first generation
+21cm BAO experiments, is also likely to be
+least familiar to those used to optical redshift surveys.
+Given the limited collecting area of early experiments, reducing thermal noise
+contributions is of paramount importance, even at the expense of the number of
+Fourier modes measured.
+Much of the work in this section builds off of the derivation of an interferometric array's
+power spectrum sensitivity presented in P12a.  We begin with a version of their 
+equation 16, which gives
+the power spectrum of the thermal noise obtained from one integration of a
+dual-polarization baseline:
+\begin{equation}
+\label{eq:single_baseline_sensitivity}
+\Delta^2_{\rm N}(k) \approx X^2Y\frac{k^3}{2\pi^2}\frac{\Omega}{2t}T_{\rm sys}^2,
+\end{equation}
+where $X^2Y$ is a scalar translating observed units to cosmological distances in $h^{-1}$Mpc
+($X$ converts from angles on the sky to transverse distances, $Y$ from bandwidth to
+line-of-sight distance), $\Omega$ is the solid angle of the primary beam of one element
+in steradians, and $T_{\rm sys}$ is the system temperature.
+
+The science goals of a BAO experiment are to actually measure $X$ and $Y$; that is, since
+the exact values of $X$ and $Y$ depend on the underlying cosmology, we can combine the
+known physical scale of BAO with the angular and frequency scales in the observed signal to extract
+the detailed expansion history of the universe.  For the purpose of a sensitivity derivation,
+however, the behavior of $X$ and $Y$ can be considered well enough known to compute fiducial
+values.
+
+$X$ is related to the angular size distance, $D_{\rm A}$, as
+\begin{equation}
+\label{eq:X}
+    X=D_{\rm A}(1+z)\equiv\int_0^z{\frac{c\ dz}{H(z)}},
+\end{equation}
+with $H(z)$ in the matter/dark-energy dominated epoch being approximately given by 
+$H(z)=H_0\sqrt{\Omega_{\rm M}(1+z)^3+\Omega_\Lambda}$.  Numerical integration for a flat universe
+with $\Omega_{\rm M}=0.27$, $\Omega_\Lambda=0.73$, and $H_0=70$ yields $D_{\rm A}(z=1)\approx1680$ 
+proper $\rm{Mpc}$ \citep{wright2006}.  
+Ignoring the relatively small evolution in the 
+angular diameter distance around $z\sim1$, we can write:
+\pvm{This isn't a very accurate approximation -- the real power law index
+in $1+z$ appears to be $\sim 1.5$. It isn't clear to me though why you have to
+write any approximation down, since you don't really use it for anything, i.e., 
+why not just write the exact formula?}
+\begin{equation}
+\label{eq:X_approx}
+    X\approx 1700 (1+z) \frac{\rm Mpc}{\rm radian}.
+\end{equation}
+Note that although we use this approximation to derive the relations for thermal noise
+power spectra in this subsection, all the subsequent results include the full $z$-dependence of the
+angular diameter distance.
+
+A few more words are warranted concerning the magnitude of $X$ at $z=1$.  Given the scaling of equation \ref{eq:X_approx},
+a $16\lambda$-baseline (6.8m a $z=1$) corresponds to a transverse wavemode of 
+\pvm{note factor of 10 error}
+$k_\perp = 0.042~h\rm{Mpc}^{-1}$, a non-neglible value compared to the first 
+BAO peak at 
+$\sim 0.08~h\rm{Mpc}^{-1}$.  Therefore, baselines longer than 
+$\sim 32\lambda$ will 
+lose access to the first peak and be less effective
+probes of cosmology, regardless of foreground effects to be discussed later.  This scaling
+motivates the extremely compact configurations proposed for BAOBAB in \S\ref{sec:baobab}, despite
+the possible systematics associated with such short 
+baselines.\footnote{Epoch of Reionization experiments at $z=9$, however, do not
+find themselves 
+limited by the transverse modes probed. 
+$X(z=9) \approx 9360 \frac{\rm Mpc}{\rm radian}$ (P12a), 
+so that a $16\lambda$-baseline corresponds to 
+$k_{\perp} = 0.015 h\rm{Mpc}^{-1}$.  
+With this scaling, the effect of the $k_{\perp}$ component on the measured power spectrum will 
+always be sub-dominant to the foreground effects described in P12b.}
+
+To compute the scaling between frequency, $\nu$, and comoving line-of-sight distance, $r_{\rm los}$, we use
+\begin{equation}
+    dr_{\rm los} = \frac{c dz}{H(z)}.
+\end{equation}
+Since $\nu(1+z)=\nu_{21}$, we have that $dz/(1+z)=-d\nu/\nu$, so
+\begin{equation}
+\label{eq:Y}
+    Y\equiv\frac{dr_{\rm los}}{d\nu}=\frac{c(1+z)^2}{\nu_{21} H(z)}.
+\end{equation}
+Evaluating the above numerically, we get
+\pvm{Here, on the other hand, I don't see why it is an approximation at all.}
+\begin{equation}
+    Y\approx3.0\frac{(1+z)^2}{\sqrt{\Omega_{\rm M}(1+z)^3+\Omega_\Lambda}}\ \frac{\rm Mpc}{\rm MHz}.
+\end{equation}
+Finally, we compute the product $X^2Y$ used in equation \ref{eq:single_baseline_sensitivity}:
+\begin{equation}
+    X^2Y\approx2.93\frac{(1+z)^4}{\sqrt{\Omega_{\rm M}(1+z)^3+\Omega_\Lambda}}\ \frac{{(h^{-1}\rm Mpc})^3}{{\rm sr}\cdot{\rm Hz}}.
+\label{eq:cosmo_scaling}
+\end{equation}
+Nominally, $X^2Y=28 (h^{-1}\rm{Mpc)^3~sr^{-1}~Hz^{-1}}$
+ at $z=1$.\footnote{The magnitude of $X^2Y$ at $z=1$ represents 
+an often-underappreciated gain in sensitivity between a 21cm BAO experiment and a similar
+reionization experiment.  At $z=9$, $X^2Y \approx 540(h^{-1}\rm{Mpc)^3~sr^{-1}~Hz^{-1}}$, 
+meaning that the quoted EoR signal strength of
+$\sim10\rm{mK}^2$ is normalized over a much larger volume.  The smaller volume scalar at $z=1$
+means that over an order of magnitude less thermal noise is picked up per equivalent integration.}
+
+The other values in equation \ref{eq:single_baseline_sensitivity} are system-dependent parameters.
+The BAOBAB tiles have a considerably sized primary beam on the sky, $\Omega \approx 150 \rm{sq. deg}\approx 0.045$sr.  However, this beam is significantly narrower than that of a single dipole,
+$\Omega \approx 0.75$sr, so that the use of beamforming results in a considerably lower noise level,
+since our noise power spectrum scales as $\Omega$ into equation \ref{eq:single_baseline_sensitivity}.
+
+The issue of system temperature is another instance where a BAO experiment at $z=1$ is
+fundamentally different from an EoR experiment at $z=9$.  In the EoR case, galactic synchrotron emission is the primary source of noise at 150 MHz,
+with a value of $\sim300$K toward the galactic poles.  However, synchrotron emission scales approximately as
+\begin{equation}
+    T_{\rm sync}\approx 300 {\rm K} \left(\frac{\nu}{150 {\rm MHz}}\right)^{-2.5}.
+\end{equation}
+At frequencies around $750$ MHz, $T_{\rm sync}\approx 5{\rm K}$.  This value is substantially below
+typical receiver temperatures of $50{\rm K}$, so that receiver temperatures will dominate $T_{\rm sys}$.  As described
+in \S\ref{sec:baobab}, BAOBAB will have a system temperature of approximately 50K across its
+entire band.
+
+We can express the noise power spectrum of one dual-polarization 
+baseline integrating on one Fourier mode 
+by substituting these fiducial values in equation \ref{eq:single_baseline_sensitivity}:
+\begin{align}
+\label{eq:quant_single_baseline_sensitivity}
+    \Delta^2_{\rm N}(k) \approx &~8\times10^{-3} \frac{(1+z)^4}{\sqrt{\Omega_{\rm M}(1+z)^3+\Omega_\Lambda}}
+    \left[\frac{k}{0.1h\rm{Mpc}^{-1}}\right]^3
+    \nonumber\\&\times
+    \left[\frac{\Omega}{0.045~\rm{sr}}\right]^\frac32
+    \left[\frac{180~\rm{days}}{t_{\rm days}}\right]
+    \left[\frac{|\vec{u}|}{20}\right]
+    \left[\frac{T_{\rm sys}}{50~\rm{K}}\right]^2 \rm{mK}^2,
+\end{align}
+where $|\vec{u}|$ is the length of the baseline in wavelengths.
+The additional factors of $\Omega^\frac12$ sets the diameter of a $uv$-pixel
+and $|\vec{u}|$ sets the length of time the baseline samples that same pixel.  Our fiducial
+``long observation" is 180 days; we set this value as a hard maximum for the number
+of days BAOBAB can observe in one calendar year.  This choice comes from the fact that observations
+will be compromised by foreground emission when either the Galactic plane or the sun is in view.
+
+In order to calculate the sensitivity of an entire interferometric array, we must sum
+the contributions of all the Fourier modes sampled every baseline, 
+paying careful attention to the different scalings of
+noise for redundant and non-redundant measurements of each mode.
+In our formalism, the effect of array configuration enters through the $f/f_0$ metric 
+for the amount of redundancy in an array configuration, defined in 
+P12a as:
+\begin{equation}
+\frac{f}{f_0} \equiv \frac{\sum\limits_i n_i^2}{\sum\limits_i n_i},
+\end{equation}
+where $i$ labels individual $uv$ pixels, and $n_i$ the number of one-second integration samples
+falling within pixel $i$.
+An $f/f_0$ factor of $10^4$ is representative of the 32-element maximum redundancy
+arrays also described in P12a.
+The sensitivity boost comes from the fact that 
+redundant sampling beats down thermal noise more quickly, since redundant
+measurements can be added in temperature, and not the temperature-squared units of a power
+spectrum.  The resultant sensitivity is:
+\begin{align}
+\label{eq:noise_pk}
+    \Delta^2_{\rm N}(k)\approx &~2 \times 10^{-4}
+    \frac{(1+z)^4}{\sqrt{\Omega_{\rm M}(1+z)^3+\Omega_\Lambda}}
+    \left[\frac{k}{0.1h\rm{Mpc}^{-1}}\right]^3
+    \left[\frac{\Omega}{0.045\ {\rm sr}}\right]
+    \nonumber\\&\times    
+    \left[\frac{T_{\rm sys}}{50\ {\rm K}}\right]^2
+    \left[\frac{8\ {\rm hrs}}{t_{\rm per\_day}}\right]^\frac12
+    \left[\frac{180\ {\rm days}}{t_{\rm days}}\right]
+    \left[\frac{32}{N}\right]
+    \left[\frac{10^4 f_0}{f}\right]^\frac12
+    {\rm mK}^2.
+\end{align}
+The $f/f_0$ term is computed from $uv$ sampling patterns including earth
+rotation aperture synthesis effects, and accounts for most
+all effects regarding array configuration.  Hence, the additional factors of $\Omega^\frac12$
+and $|\vec{u}|$ that appeared in equation \ref{eq:quant_single_baseline_sensitivity} do not
+appear in \ref{eq:noise_pk}.  However, we have separated the term containing $N$, the number
+of antennas, to give a sense of how sensitivity will roughly scale with array size.
+The factor of $t_{\rm per\_day}$ sets the total integration time per day, which will likely
+be limited by the size of a low foreground emission region (i.e., a ``cold patch").  We choose
+8 hours as the maximum time that can spent observing cold patches per day, a value influenced
+by existing all-sky maps and observations with PAPER.
+To calculate $f/f_0$,
+we split this 8-hour period into separate one-hour observations phased to a single pointing center,
+roughly corresponding to the width of the BAOBAB primary beam, after which 
+a statistically independent patch of sky comes to dominate the data.
+
+Although redundant sampling can lead to up to an order of magnitude reduction or more 
+in thermal noise levels, it does come at a price.  Once SNR in a single mode approaches unity,
+sample variance becomes equivalent in magnitude to thermal noise uncertainty.  Redundant
+sampling is therefore best used to reach SNR $\sim 1$, after which one must sample an independent set of modes,
+either through observations of a different patch of sky or an array reconfiguring.  For first
+generation experiments, reaching SNR $\sim 1$ on a single mode is an ambitious limit, so thermal
+noise will be the dominant source of uncertainty.
+
+\subsubsection{Sample Variance}
+\label{sec:sample_variance}
+
+In galaxy redshift surveys, the sample variance can be calculated relatively simply by 
+counting Fourier modes over an effective survey volume.  However, in the case of BAOBAB,
+not all modes are equal, since we have used redundant samples of certain modes to beat down thermal
+noise.  In creating a 1- or 2-D power spectrum out of the full 3-D Fourier space,
+we must take a weighted combination of these modes, since the ratio of 
+thermal noise to sample variance can vary between every $k$-mode measured.
+
+Using inverse-variance weighting to combine each measurement at a particular $k$-mode, 
+one finds that the optimal estimator of the power spectrum results in an error
+that can be calculated by combining the errors on each separate mode in inverse-quadrature:
+\begin{equation}
+\delta \Delta^2(k) = \left(\sum\limits_i\frac{1}{\left(\Delta^2_{\rm{N},i}(k)+
+\Delta^2_{21}(k)\right)^2}\right)^{-\frac12},
+\end{equation}
+where $\delta\Delta^2(k)$ is the resultant uncertainty on a given $k$-mode, $\Delta^2_{\rm N}$ 
+is the thermal noise power spectrum calculated in \ref{sec:thermal_noise}, $\Delta^2_{21}(k)$
+is the cosmological 21cm power spectrum (which is also the sample variance 
+error), and $i$
+is an index labeling the independent $k$-modes over which we are summing 
+(note that we never combine modes into bands with significantly varying 
+$\mathbf{k}$, which is why we can sum inverse absolute variance instead of 
+inverse fractional variance). \pvm{this note is necessary because this formula
+is only optimal if all modes have the same signal -- people are used to seeing
+the fractional error version}
+
+Since the sample variance is completely a function of the $uv$-coverage of an array,
+it is best calculated
+numerically.  In Figure \ref{fig:sense_wwo_samp_var} we plot the 1D thermal noise and 
+sample variance uncertainties for
+two maximum-redundancy configurations of BAOBAB --- 35- and 132-tiles ---
+shown in Figures \ref{fig:configuration} and \ref{fig:antpos128}.  
+To calculate the sample variance,
+we use the 21cm brightness power spectrum from CAMB, shown in Figure \ref{fig:21cmps}.
+At the scale of the first acoustic peak, sample variance has clearly become the dominant source 
+of error for a long integration with 132-elements; we discuss possible methods for improving this
+situation in \S\ref{sec:baobab128} and \S\ref{sec:improving}.  At the smaller scales, however, the analytic functions given in
+the previous section accurately reproduce the array sensitivity.  Note that the thermal noise
+only curve in Figure \ref{fig:sense_wwo_samp_var} is not a perfect power law because not all 
+baselines can probe the largest scales.  Also note that the foreground model discussed in
+\S\ref{sec:dspec} is used to exclude modes from this calculation.
+
+\subsubsection{Shot Noise}
+\label{sec:shot_noise}
+
+Measurements of the 21cm power spectrum will also be affected by the discrete nature of
+the neutral hydrogen distribution at low redshift.  Only overdensities self-shielded to the $\sim1$ Ry ionizing background
+contain neutral hydrogen, so we will be subject to the same galactic shot noise as
+optical redshift surveys.  Following \citet{seo_et_al_2010}, we assume that galaxy
+positions and luminosities are distributed with probability proportional to
+$1+b~\delta_m$, where $b$ is the bias and $\delta_m$ is the mass overdensity.  This allows
+us to treat shot noise as a scale-independent contribution to the power spectrum
+with $P(k) = 1/\bar{n}$.  In terms of 21cm brightness:
+\begin{align}
+\Delta^2_{\rm shot}(k) \approx \left[\tilde{T}_{21}(z)\right]^2 \frac{1}{\bar{n}} \frac{k^3}{2\pi^2}
+\end{align}
+Using the result of \citet{seo_et_al_2010} (who use a fit to the neutral hydrogen mass
+function of \citealt{zwaan_et_al_2005}), $\bar{n} = 0.01~h^{3}\rm{Mpc}^{-3}$ and 
+$\Delta^2_{\rm shot} \approx 6.5 \times 10^{-5} \rm{mK}^2$ at $k = 0.1~h\rm{Mpc}^{-1}$ and 
+$z = 1$.  The number density of hydrogen-containing halos is substantially higher than for
+the bright galaxies used in optical/NIR surveys, making shot noise a substantially smaller 
+contaminant; it will only begin to dominate the signal
+at $k > 2~h\rm{Mpc}^{-1}$.
+Regardless of uncertainties in this calculation, shot noise is clearly
+a subdominant effect, and we neglect it for the remainder of this work.
+
+\subsection{The Delay Spectrum Technique at $z\sim 1$}
+\label{sec:dspec}
+
+Before combining the results of the last two sections, we must discuss the effect of
+foregrounds on power spectrum measurements.  The presence of foreground emission orders
+of magnitude brighter than the cosmological 21cm signal has been one of the major impediments
+for high-redshift 21cm tomography.  P12b presented a per-baseline delay-spectrum
+technique for isolating foreground emission solely on the basis of its spectral smoothness.
+In this section we briefly recapitulate the principles of the delay-spectrum technique, and present
+a simple approximation for the behavior of foregrounds in the 600-900 MHz band.
+
+The delay spectrum technique is a methodology for using each baseline of
+an interferometer as a independent probe of the 21cm power spectrum.  The most powerful
+aspect of this approach is that the frequency dependence of a baseline's Fourier
+sampling pattern, typically regarded as a major complication for 21cm experiments,
+naturally gives rise to an isolation of foreground emission in Fourier space.  The ability
+to remove foregrounds on a per-baseline basis allows multiple baselines to be tuned to
+target the same Fourier mode for greater sensitivity, as opposed to more traditional
+techniques that use overlapping $uv$-coverage at multiple frequencies to avoid the issue
+of frequency-dependent sampling.
+
+At the heart of the delay transform is a dual interpretation of the Fourier transform
+of interferometric visibilities along the frequency axis.  On the one hand, for 21cm
+experiments, frequency maps directly into redshift since the observed signal is a spectral
+line.  Therefore, the Fourier transform along the frequency axis gives $k_{\parallel}$, the
+Fourier wavemode along the line of sight.  However, the frequency dependence of a baseline's
+length (as measured in wavelengths), gives rise to the delay transform interpretation of the
+frequency Fourier transform presented in \citet{parsons_and_backer_2009}.  
+If performed over a wide enough bandwidth, this transform
+maps sources to Dirac delta functions in ``delay space," corresponding to the geometric
+delay of signal arrival time between the two elements of the baseline.  There is thus
+a maximum delay at which any signal coming from the sky can appear, set by the physical
+length of the baseline.  Furthermore, each source delta-function will be convolved
+by a kernel representing the Fourier transform of that source's intrinsic spectrum (as
+well as any spectral features introduced by the instrument).  Therefore, as long as the
+instrumental frequency structure is kept to a minimum, sources with smooth intrinsic
+spectra (such as foreground emission) will have their emission confined within the
+region of delay space set by the maximum delays (the so-called ``horizon-limit").  
+Sources with unsmooth emission,
+like the 21cm signal, will be convolved by a broad kernel, scattering ``sidelobes"
+well beyond the horizon limit, and creating a window for detecting 21cm emission free of
+smooth-spectrum foregrounds.  
+
+A full simulation quantifying the effects of the delay transform on foregrounds
+is beyond the scope of this work.  Rather, we assign a baseline-dependent minimum 
+$k_{\parallel}$, below which we exclude modes as being wholly contaminated by 
+foregrounds.
+We chose the value of $k$ based on the simulations presented for PAPER
+in \citet{parsons_et_al_2012b}, which finds for the shortest baselines
+foregrounds contaminate modes with $k_{\parallel} \lesssim 0.2~h\rm{Mpc}^{-1}$.  
+At EoR frequencies of 150 MHz, this cutoff maps to delay-modes of 400 ns.  Since BAOBAB
+baselines are physically shorter by a factor of 5, this reduces the maximum
+delay-space contamination to 80 ns, which in turn maps back to $k = 0.1~h\rm{Mpc}^{-1}$
+at 750 MHz, using the $Y$ parameter from equation \ref{eq:Y}.
+There are two important factors which will further serve to reduce this number
+for BAOBAB.  First, celestial foregrounds should have power law spectra with steeply decrease
+in intensity versus frequency, and so will be fainter than at EoR frequencies. 
+Although the signal has also fallen a similar amount, this reduced foreground structure will still make the delay transform even more
+effective at isolating foreground emission.  Secondly, the narrower primary beam of BAOBAB
+will limit the delay modes from which there can be appreciable celestial emission,
+as sources near the horizon will be significantly attenuated.  
+
+We perform a cursory calculation in which the delay-transform is applied to a simulated sky model.  
+In these simulations, we assume the sky is entirely composed of point sources, where the source
+strength distribution follows a power-law with a slope of -2.0, normalized
+to a 2 Jy source per 10 steradians, a distribution derived empirically
+from PAPER data.  We also model the frequency spectrum of each
+source as a power-law with a normal distribution of spectral indices centered on -1.0
+and a standard deviation of 0.25.  We refer to these
+simulations as ``cursory," since they exclude instrumental effects such as RFI flagging
+and frequency-dependent beam structure.  
+Instead, we use a single, frequency-independent Gaussian to model the primary beam of the
+BAOBAB tile; the effects of a more realistic beam model are discussed in \S\ref{sec:discussion}.
+We find the delay transform confines foregrounds to $k$-modes below a value of 
+$k_{\parallel} = 0.045~h{\rm Mpc}^{-1}$ for baselines of 16 wavelengths.
+The $k_{\parallel}$ value for the maximum delay of a 16$\lambda$ baseline at 750 MHz (i.e., the 
+horizon limit) is 0.028 Mpc, which that the intrinsic spectral behavior of foreground emission
+corresponds to a kernel of width $\sim 0.02~h{\rm Mpc}^{-1}$.  In this work, our foreground model
+is to exclude $k$-modes smaller than the sum of the maximum realizable delay on a baseline
+(converted from seconds of light-travel time to $h{\rm Mpc}^{-1}$ using equation \ref{eq:Y}) 
+and this kernel.  In effect, this model states that intrinsic spectral structure in foregrounds 
+corrupt $0.02~h{\rm Mpc}^{-1}$ beyond a na\"{i}ve prediction based only on the physical 
+length of the baseline.
+
+\subsection{Detecting the HI Power Spectrum}
+\label{sec:baobab32}
+
+The first major science result from BAOBAB will be the detection of the 21cm power spectrum near 
+$z\sim1$.  A high significance detection will be achievable with a short $\sim1$-month observation
+of a 35-tile system operating in the 
+maximum redundancy shown in Figure \ref{fig:configuration}.\footnote{Correlator inputs have 
+traditionally been in powers of 2; hence this array is our $\sim 32$-tile configuration. The sensitivity calculations do assume that all 35 elements are correlated.}  
+The predicted measurement for a 30-day observation 
+(240 hours) is shown in Figure \ref{fig:baobab32_sense}.  These observations assume a 100-MHz
+bandwidth centered on 750 MHz ($z = 0.89$).  The net result is an $5.4\sigma$ detection of
+the 21cm power spectrum when our model for foreground emission from \S\ref{sec:dspec}
+is used to exclude contaminated modes.  
+Results for bands centered on $650~(z = 1.18)$ and 850 MHz $(z = 0.67)$
+are similar, yielding $5.7\sigma$ and $5.0\sigma$ detections, respectively.
+The lower
+significance detection at the lowest redshifts results from the scaling of the angular diameter
+distance; at redshift $z = 0.67$, a $16\lambda$ baseline corresponds to a $k_{\perp}$ wavemode
+of $\sim0.06~h{\rm Mpc}^{-1}$, further limiting the number of baselines that can probe
+the largest-scale $k$-modes where thermal noise is lowest.  
+While the 21cm signal grows brighter with redshift,
+the noise remains roughly constant, as it is dominated by our frequency-independent
+front-end amplifier noise temperature.  This trend does not continue indefinitely, however,
+as sky noise increases with increasing redshift, eventually dominating the system temperature.
+  
+Constraints of this level will allow for an accurate determination of $f_{\rm HI}~b$, 
+the combination of the cosmic neutral
+hydrogen fraction and the bias of neutral hydrogen containing regions, as a function of redshift.  Breaking the degeneracy between these parameters will require
+additional information.  Measuring redshift-space distortions can, in principle,
+separate the effects of the two terms. 
+Constraints from a longer integration or a system with $\sim 64$ elements
+will further improve constraints on the neutral hydrogen power spectrum, and it will be possible
+for these systems to measure redshift-space distortion effects.  
+Measuring 
+these effects accurately requires more careful systematic control, which may
+warrant different configurations and observing strategies, so we postpone an 
+exploration of this science to a future work (see, e.g., Masui et al. 2010).
+\pvm{Changes to above paragraph. 
+You wouldn't change the strategy significantly based on statistics alone.} 
+
+\pvm{I would drop LyaF entirely from the paper. There is nothing wrong with it
+in principle, but no one would question if you didn't put it in, and I think 
+it noticeably clutters up the argument for your survey. I'm sure it is 
+my fault that it is here, but (looking back at the email where I 
+sent them), at the time when I sent them they had positive value in that
+the numbers you were using for BAOBAB were stronger and putting in the LyaF
+numbers made clear that having LyaF did *not* seriously undermine
+the BAOBAB value -- now that is less unambiguously true, so it would be
+better not to open that can of worms. 
+I don't know -- even simply compressing them into one 
+redshift in Table 2 so they aren't so prominent in that table would improve
+the presentation significantly, in my opinion (i.e., you can add them in 
+inverse quadrature).}
+
+\subsection{Detecting Baryon Acoustic Oscillations}
+\label{sec:baobab128}
+
+As shown in in Figure \ref{fig:sense_wwo_samp_var}, a 132-tile BAOBAB array with the configuration
+show in Figure \ref{fig:antpos128} starts approaching 
+the sample variance limit in 180 days (1440 hours) of observing time.  
+This observation yields a $2.9\sigma$ detection of the BAO features at $z = 1.18$, 
+with effective $1.7-$ and $2.3\sigma$ non-detections at the $z = 0.67$ and $z = 0.89$ bands,
+respectively.
+The effect of sample variance is most dominant at the lower redshifts, 
+because the angular diameter distance scaling means that fewer samples of the BAO scale can be
+found in the same area of sky (this observation of 8-independent fields with a
+0.045 steradian primary beam corresponds to an effective survey area of $\sim 1200$ square degrees).
+While longer observations with the same array configuration can improve these constraints, a
+better approach will be to observe additional independent fields.
+
+For our fiducial BAOBAB observation, we use an array which observes 24 independent fields
+(i.e., three independent declination observations for 8 hours per day), yielding an
+effective survey area of $\sim 3600$ square degrees.  There are several equivalent ways an 
+experiment can probe this additional area.  One approach would be to conduct three 1-year surveys,
+with the dipoles pointed towards a different declination; this could be achieved by physically
+placing the array on an platform inclined by $\sim 15^{\circ}$, or potentially by adding a steering
+component to the tile-beamformers.  If the beamformers are designed to allow multiple beams, one
+could in principle achieve similar sensitivities with only one year of observing, although
+at the expense of additional degrees of complexity in the system.  If funding permits, the 
+simplest approach might be to build three 132-tile BAOBAB arrays, each tilted towards a different
+declination; this would also yield the subsequently predicted sensitivities in only one season of
+observing.  Note that for BAO science these independent configurations are more desirable than
+an array with a larger number of fully correlated tiles.  Since we are using a close-packed
+configuration, the addition of more tiles can only yield new modes at 
+\pvm{Took out ''scale'' here.}
+corresponding larger $k_{\perp}$,
+where the amount of BAO information is significantly diminished.  It may be 
+possible
+\pvm{Changed ''scale'' to $k$, because ``larger scale'' universally means 
+smaller $k$.}
+that more information could be recovered from these larger $k$ modes using a 
+reconstruction
+method (e.g. \citealt{eisenstein_et_al_2007}, \citealt{padmanabhan_et_al_2009},
+\citealt{noh_et_al_2009}), but we do not explore this option in this work.  In \S\ref{sec:improving},
+we discuss other ways to increase the survey footprint and further reduce the effect of sample
+variance.
+
+We plot the expected constraints for the three-declination range fiducial BAOBAB observations on
+the $z = 0.89$ BAO features in Figure \ref{fig:baobab128_sense}, where the broad band
+shape of the power spectrum has been removed using the transfer function fit
+of \citet{eisenstein_and_hu_1998}, which neglects BAO.
+The measurements from a 180-day integration at each declination range with this array 
+amount to an 4$\sigma$ detection of these features.  Results are similar
+for the other redshift bins, with expected 3$\sigma$ and 5$\sigma$ detections 
+at redshifts of 
+0.67 and 1.18, respectively.  While it is clear from 
+Figure \ref{fig:sense_wwo_samp_var} that
+sample variance dominates the errors on the largest scale modes after 180 days 
+of observing
+one declination range, we find the additional sensitivity towards the higher BAO peaks with this
+observing duration yields better constraints on the signal than e.g., observing twice as many
+declination ranges for 90 days.  We will further discuss
+ways to improve on the sample variance limit in \S\ref{sec:improving}.
+
+With a significant BAO detection, BAOBAB can also begin to place 
+constraints on cosmological parameters.  To quantify the effect of such measurements,
+we use the Fisher matrix formalism of the Joint Dark Energy Mission (JDEM) Figure of Merit
+Science Working Group (FoMSWG; \citealt{albrecht_et_al_2009}), defining our Fisher matrix as:
+\begin{equation}
+\label{eq:fish}
+{\cal F}_{ij} = \sum_b \frac{1}{\sigma_b^2}\frac{\partial f_b}{\partial p^i}\frac{\partial f_b}{\partial p^j},
+\end{equation}
+where $f$ is some observable measured at some $b$ values, $\sigma^2$ is the variance in a 
+measured value of $f$, $p^i$ are cosmological parameters, and
+we sum over all measured $f_b$ values.  
+
+We propagate our power spectrum measurements into constraints on the Hubble parameter $H(z)$
+and angular diameter distance $D_A$
+using this formalism, where $f = \Delta^2(k)$, our measured power spectrum, $b = k$, the set
+of $k$-modes we measured, and $p^i = [H(z),D_A]$.
+The derivatives with respect to $D_A$ and $H(z)$ are straightforward to calculate, as they affect
+our measurements through the $X$ and $Y$ parameters defined in equations \ref{eq:X} and \ref{eq:Y}.
+In effect, changing $H(z)$ or $D_A$ changes the $k$-modes sampled by BAOBAB.
+For our calculations, we exclude $k$-modes deemed contaminated by our foreground
+model of \S\ref{sec:dspec}.  We also model the nonlinear degeneration of higher $k$-modes
+using the elliptical Gaussian formula from \citet{seo_and_eisenstein_2007}.
+\pvm{Why do you only get around to describing how you isolate BAO here, when
+you clearly needed it for detection significance numbers earlier?}
+To isolate the constraints provided by the BAO features from the broad-band shape of the
+power spectrum, we remove a model fit using the transfer function from
+\citet{eisenstein_and_hu_1998}.  We split our data into three redshift bins centered at 
+$z = 0.67,0.89$ and 1.18.  Although our frequency coverage is continuous between 
+$z = 0.58$ and 1.37, we find that there is minimal penalty for using only three bins in a Fisher matrix
+study.  The result of this calculation is that our fiducial 3-declination, 180-day 
+integration yields measurements of 
+$H(z)$ with an error ranging from 10\% to 5\% across our three redshift bins, 
+from low to high redshift, and measurements of $D_A$ with errors effectively 
+constant at 18\% over the same range (note that errors $\gtrsim 5$\% should
+be understood in the usual formal Fisher matrix sense -- these measurements
+would not correspond to significant detections, taken in isolation).
+\pvm{extra note above}
+The particularly poor constraints on $D_A$ come from the loss of modes due to 
+foreground emission;
+we further explore the effects of our foreground model in \S\ref{sec:shortcomings}.
+Taking
+correlations between $H(z)$ and $D_A$ into account, these measurements amount 
+to $2.5\%$ to $4.5\%$ errors on a ``dilation factor," which scales $D_A$ and 
+$H^{-1}(z)$ in proportion.
+The exact uncertainties are given in Table \ref{tab:constraints}.
+
+\begin{table}[ht]\centering
+\caption{
+Percent errors on the distance scale from BAO measurements, for a 
+3 declination (3600 sq. deg.) survey.  
+\pvm{Too hard to figure out what configuration was used here from text.}
+The correlation is the correlation coefficient between the $H(z)$ and $D_A$ 
+measurements.  BOSS-LRG constraints come from
+\citet{schlegel_et_al_2009} and BOSS-Ly$\alpha$ Forest constraints come from 
+the method of
+\citet{mcdonald_and_eisenstein_2007} and \citet{dawson_et_al_2012}. (Note that
+errors $\gtrsim 5$\% do not generally correspond to significant BAO detections,
+however, the BAOBAB $H(z)$ and $D_A(z)$ constraints can be combined
+into dilation factor measurements with distance errors 2.5-4.5\%, which 
+correspond to 3-5$\sigma$ significance.)
+\pvm{Need to remember that what people do with 
+papers is often first skim them to see if there are interesting tables or 
+figures, and base their decision whether or not to read any further on them 
+-- you want to make sure key tables/figures look good and aren't confusing.}
+}
+\begin{tabular}{l|cccc}
+Survey & Redshift & $H(z)$ Uncertainty & $D_A$ Uncertainty & Correlation\\
+\hline\hline
+BAOBAB & 0.67 & 9.6\% & 18.6\% & 0.72 \\
+BAOBAB & 0.89 & 6.7\% & 18.4\% & 0.74 \\
+BAOBAB & 1.18 & 4.9\% & 17.9\% & 0.74 \\
+\hline
+BOSS-LRG & 0.35 & 1.8\% & 1.0\% & 0.41 \\
+BOSS-LRG & 0.6 & 1.7\% & 1.0\% & 0.41 \\
+\hline
+BOSS-Ly$\alpha$ & 2.09 & 6.7\% & 17\% & 0.58 \\
+BOSS-Ly$\alpha$ & 2.41 & 4.8\% & 11\% & 0.58 \\
+BOSS-Ly$\alpha$ & 2.72 & 6.3\% & 18\% & 0.59 \\
+BOSS-Ly$\alpha$ & 3.04 & 8.6\% & 29\% & 0.56 \\
+\end{tabular}
+\label{tab:constraints}
+\end{table}
+
+It is also straightforward to propagate these errors on $H(z)$ and $D_A$ into errors on underlying
+cosmological parameters through the Fisher matrix formalism of equation \ref{eq:fish}.
+In this case, $f$ is now $H(z)$ or $D_A$ and $b$ corresponds to the redshift bin it was measured in.
+$H(z)$ is given by:
+\begin{equation}
+H^2(z) = H_0^2\left[\Omega_R(1+z)^4 + \Omega_m(1+z)^3 + \Omega_k(1+z)^2 + \Omega_{DE}\ \rm{exp}\left(3\int_0^z\frac{dz'}{1+z'}[1+w(z')]\right)\right].
+\end{equation}
+$D_A$ is given by:
+\begin{equation}
+D_A(z) = \frac{1}{1+z}\int_0^z\frac{cdz}{H(z)}
+\end{equation}
+The parameters of interest, $p^i$, are now the underlying cosmological parameters.  We use
+the parameterization of the JDEM FoMSWG, 
+which include $w_m, w_b, w_k$ and $w_{DE}$ 
+($w_X = \Omega_Xh^2$, where $m, b, k$, and $DE$ correspond to the matter, baryon, curvature and
+present day dark energy density, respectively) although we use the simpler 2-component form
+for the dark energy equation of state:
+\begin{equation}
+w(a) = w_0 + (1-a)w_a.
+\end{equation}
+Following the convention of Dark Energy Task Force report 
+\citep{albrecht_et_al_2006}, we marginalize over all other parameters after combining 
+our Fisher matrices with constraints from other experiments, to create $2\times2$ matrix representing
+constraints on $w_0$ and $w_a$.  
+As a Figure of Merit we use FoM = $|{\cal F'}|^{1/2}$, where $\cal F'$
+is our original Fisher matrix $\cal F$, marginalized to a 2D $(w_0,w_a)$-space; this FoM
+is proportional to the inverse of the error ellipse area in the $w_0-w_a$ plane.
+
+As a baseline experiment,
+we use the JDEM FoMSWG predictions for the Planck satellite, combined with constraints from the 
+BOSS-LRG survey listed in Table \ref{tab:constraints} and a 5\% error on $H_0$.  
+This combination of experiments yields an FoM
+of 8.7.  Including the measurements from our fiducial BAOBAB observation increases this
+FoM value to 16.0.  This FoM
+shows that the high-redshift constraints from BAOBAB can significantly improve our current
+measurements of the dark energy equation of state.  If we include the Ly$\alpha$ forest
+survey of BOSS, our baseline constraint FoM becomes 17.8 which is improved to 22.5 with the inclusion
+of BAOBAB data.  These constraints are plotted as 1 and 2$\sigma$ error ellipses in Figure
+\ref{fig:fish}.  Even when the BOSS-Ly$\alpha$ forest constraints between redshifts 2 and 3 are 
+added, BAOBAB still provides valuable information, serving to increase the FoM by $\sim 25\%$.
+
+\section{Discussion}
+\label{sec:discussion}
+
+We break this discussion into two parts.  In \S\ref{sec:shortcomings}, we consider two 
+components of our analysis which may be overly simplistic: our model of the BAOBAB primary
+beam as a frequency-independent Gaussian, and our foreground emission model.  We discuss the effects 
+any shortcomings in these models could have on our conclusions. In \S\ref{sec:improving},
+we consider the fact that sample variance is the dominant source of uncertainty in our
+measurements, and present future approachs that could improve the dark energy constraints possible 
+with the BAOBAB instrument.
+
+\subsection{Potential Shortcomings in the Analysis}
+\label{sec:shortcomings}
+The most significant effect that could modify the predictions presented in this
+work is the use of an overly simplistic model for the BAOBAB beam: a frequency independent
+Gaussian.  Although this model is sufficient to calculate sensitivities, the effects of
+a more realistic beam model on the delay spectrum foreground removal technique will necessitate
+further investigations.  The dominant effect will be from the existence of frequency-dependent
+grating-lobe structure associated with the tile.  These sidelobes can introduce apparent 
+frequency structure into otherwise spectrally
+smooth foreground emission.  If this structure represents a significant increase in the size
+of the delay-space convolving kernel, it will move the foreground contaminated region to higher $k$ values.  If the size of the effect is
+large enough to push foreground emission on the shortest baselines beyond the first BAO peak,
+the predicted cosmological constraints could be reduced.
+
+Note, however, that the frequency-independent Gaussian beam is not as bad an assumption as it
+might first appear.  If we were trying to image the sky, ignoring the grating lobes associated with
+the tile would be unjustified.  With the delay spectrum approach, though, the issue is not
+the existence of the sidelobes, but their frequency dependence.  If the frequency Fourier transform
+of the beam pattern is particularly broad --- corresponding to rapid evolution of the beam pattern
+with frequency --- then foreground emission will have a similarly broad footprint in delay space,
+compromising the 21cm signal.  However, as argued in P12b, it is difficult for an element
+only several wavelengths across to possess such frequency structure.  As stated in \S\ref{sec:dspec},
+we will postpone a detailed investigation of these effects to a future paper, and focus here
+on array sensitivities, for which the Gaussian model is sufficient.
+
+As noted in \S\ref{sec:baobab128}, our constraints on $D_A$ are significantly limited by foreground
+emission.  We illustrate this effect if Figure \ref{fig:fgloss}, which shows the sampling pattern
+of BAOBAB-132 at 750 MHz in the ($k_{\perp}$-$k_{\parallel}$)-plane, highlighting those modes 
+discarded as contaminated by our foreground model of \S\ref{sec:dspec}.  
+Foreground
+contamination effectively excludes modes where 
+$k_{\perp} \lesssim k_{\parallel}$, i.e., transverse
+modes.  
+\pvm{$k_{\perp}$ not necessarily *much* less than $k_{\parallel}$}
+This has the effect of significantly degrading the achievable constraints on $D_A$.
+
+While our foreground model presented in \S\ref{sec:dspec} is empirically motivated, 
+accurate predictions for foreground emission
+will need to come from early BAOBAB arrays or other 21cm experiments.  We briefly explore the effect
+of changing the size of additive component of our foreground emission model arising from the
+spectral smoothness (or lack thereof) the emission.  For our fiducial model, this term has a
+magnitude of $k_{\parallel} = 0.02~h{\rm Mpc}^{-1}$; as test cases, we analyze the constraints
+obtainable with BAOBAB if this term is changed by $\Delta k_{\parallel} = 
+\pm~0.01~h{\rm Mpc}^{-1}$.  
+This has the effect of moving the cutoff between contaminated and uncontaminated modes in Figure
+\ref{fig:fgloss} up or down by $0.01~h{\rm Mpc}^{-1}$.
+
+The effect of increasing this term (i.e., if foreground emission is not as spectrally smooth as 
+predicted) is to degrade the significance of our BAO detections by $\sim 0.5\sigma$, our $H(z)$
+constraints by $\sim1\%$, our $D_A$ constraints by $\sim5\%$, and our Figure of Merit by 0.5.
+Reducing the foreground emission footprint in $k$-space (i.e., if foregrounds are spectrally
+smoother than predicted) has similar effects with the opposite sign: the significance of
+our BAO detections are increased by $\sim 0.5\sigma$, our $H(z)$ and $D_A$ constraints are improved
+by $\sim0.5\%$ and $\sim6\%$, respectively, and our FoM is increased by 0.5.  From this analysis, it is clear
+that foreground emission can significantly alter the achievable constraints on $D_A$, but in
+the end, the success of BAOBAB will not be determined by the details of foreground spectral
+properties.
+
+\subsection{Improving Our Constraints}
+\label{sec:improving}
+
+As discussed in \S\ref{sec:baobab128}, sample variance dominates the
+uncertainties in power spectrum measurements from BAOBAB.  However, measuring
+a new set of independent modes is not a trivial undertaking.  By using a close-packed array of,
+BAOBAB completely samples the $uv$-plane out to some maximum baseline length.  Therefore a simple
+array rotation or reconfiguration will not yield new samples.  Furthermore, in our highest redshift bin of z = 1.18, the longest baseline in the 132-tile array probes a transverse $k$-mode of 
+$k_{\perp} = 0.15~h{\rm Mpc}^{-1}$ (and at lower redshift, this longest baseline corresponds
+to an even larger value of $k_{\perp}$).  At this scale and smaller, most BAO information is being 
+lost to non-linear damping effects.  Therefore, the returns from increasing the array size beyond 
+$\sim128$ are limited, since effectively no new modes with significant BAO information will be
+probed.
+
+As an upper-limit to the constraints obtainable with a single-declination, $\sim1200$ square degree, 
+132-tile BAOBAB observation (as opposed to our fiducial observation targeting three declination 
+fields)
+we compute the results of a completely sample variance limited survey, i.e., one where thermal noise
+uncertainties have been set to 0 (although modes are still excluded using our foreground
+emission model).  Using the BOSS-LRG, BOSS-Ly$\alpha$ Forest, Planck and 5\% $H_0$
+constraint as our baseline with a Figure of Merit of 18, the addition of a sample variance
+limited 132-tile BAOBAB observation increases the FoM to 22.4 (compared with 22.5 for our
+fiducial 1-year observation of 3 independent declination fields).  
+For comparison, a 10-year (14,400 hour), one declination observation with the same
+array yields only a Figure of Merit of 21.2 (including the same baseline experiments).
+Therefore, while better constraints can come from a longer observation, obtaining measurements of 
+new modes to beat down sample variance is clearly the optimal way to proceed.  There are two ways
+forward to achieve this goal: map a different volume of the universe (as with our fiducial 
+experiment) or recover foreground corrupted modes.  We consider each of these approaches in turn.
+
+Since BAOBAB is a zenith-pointing, drift-scanning telescope, to map a new area of the sky, it will
+either need to be relocated or tilted to point towards a different patch of sky.  Either option
+is potentially feasible, as even a 132-tile BAOBAB experiment spans less than 20 meters.  With
+a primary beam full-width half-max of $\sim 15^{\circ}$, there are $\sim10$ independent pointings
+in declination that BAOBAB can target.  Since our fiducial observation already targets three
+declination fields, mapping every declination could in principle yield $\sim70\%$ reductions
+in the error bars over the results presented. 
+
+\pvm{This paragraph doesn't really make sense. ``Increasing $k$-space
+resolution'' is practically equivalent to increasing the extent of the survey,
+i.e., area in the transverse direction or redshift coverage, which are both
+generally possible and obviously good things... up to cost constraints. 
+For one concrete example of how this makes you look like you don't know what 
+you're talking about: you're already going to have redshift evolution --
+extending the redshift range isn't going to fundamentally change that -- you 
+are implicitly planning to deal with this in data analysis, which shouldn't
+be hard. So you can argue for not making the redshift range longer, or 
+not making the tiles smaller, but please don't do it quite like this.  }   
+%One might think that BAOBAB could obtain measurements of more independent modes by increasing its
+%$k$-space resolution.  In fact, this proposition ends up being a no-win situation.  To increase
+%resolution in $k_{\perp}$, BAOBAB would need to use smaller dishes/tiles.  However, with smaller
+%elements comes a larger field-of-view, meaning fewer independent patches of sky can be observed
+%per day.  The net effect is that there no gain from smaller elements, while the noise level
+%per integration will increase (equation \ref{eq:single_baseline_sensitivity}).  Similarly, one
+%might want to improve resolution in $k_{\parallel}$, which will result from a larger bandwidth.
+%However, there is a limit to amount of bandwidth that can be processed simultaneously,
+%as the universe will evolve over the cosmic time probed by a large bandwidth.
+
+The other way to potentially measure new modes and beat down sample variance is to recover samples
+we have considered corrupted by foregrounds.  There are two ways foregrounds compromise BAOBAB
+observations.  The first is the limited observing time per-day, set by Galactic emission,
+which we have treated as irreparably corrupting all samples, even those in principle
+recoverable with the delay transform.  If it is possible to observe all 24 hours of right ascension,
+as opposed to the 8 considered here, the constraints from a single observing season will increase
+by a factor of $\sqrt3$.  While it is unlikely that all 24 hours of right ascension
+will be workable, our fiducial value of 8 hours per day, motivated by observations
+with present EoR experiments, may well
+be conservative, since Galactic synchrotron emission has significantly fallen in brightness
+compared to EoR frequencies.
+
+Even when observing a ``cold patch," foregrounds corrupt large scale $k$-modes with a 
+footprint moving to smaller scales as baseline length increases (\S\ref{sec:dspec}).  If these
+modes could be retrieved, they could significantly increase the volume of Fourier space
+that BAOBAB can probe.  As an upper-limit, we calculate the obtainable power spectrum constraints 
+ignoring all foreground contamination.  The result is that a 1-year observation of
+three independent declination fields
+(again including our fiducial baseline experiments with a Figure of Merit of 18) yields a Figure
+of Merit of 23.5, an increase of 1 from the same observation including foreground emission.  
+In particular, we note that a foreground-free observation yields
+$\lesssim5\%$-level errors on $D_A$.  While
+an analysis of foreground removal techniques is beyond the scope of this work, this result is
+suggests that foreground removal may be the way to improve constraints on $D_A$.
+\pvm{You're really, seriously over-using FoM here. Most people would much 
+rather see BAO distance error changes for these cases. FoM is most useful for
+comparing qualitatively different experiments.}
+
+As an order of magnitude estimate, we can  consider whether a foreground removal or
+subtraction scheme might be more effective in the BAO band than at EoR frequencies.  At 
+$k\sim0.1~h\rm{Mpc}^{-1}$, the 750-MHz BAO 21cm power spectrum reaches $\sim~10^{-2}~\rm{mK}^2$,
+compared with a peak brightness at EoR frequencies of 150 MHz reaching $\sim~10~\rm{mK}^2$.  
+The steep spectrum Galactic synchrotron emission has a spectral index of -2.5, and so will fall
+by a factor of $(5^{-2.5})^2 = 3.2\times10^{-4}$ in units of temperature squared.  (Extragalactic point sources are
+less steep spectrum, and so will not fall off in brightness as steeply.  Therefore, this estimate
+can be considered a lower limit on the foreground-to-signal ratio).  While this factor of $\sim3$
+reduction in the foreground-to-signal ratio will make foregrounds slightly easier to remove from the data,
+it suggests that a foreground isolation scheme like the delay-spectrum technique is still likely
+the most viable approach for first-generation experiments limited in collecting area.
+
+
+\section{Conclusions}
+\label{sec:conclusions}
+
+In this work we have presented a concept for a new experiment using the redshifted 21cm 
+line of neutral hydrogen to probe cosmology at $z\sim1$.  The BAO Broadband and Broad-beam
+Array (BAOBAB) will incorporate both the hardware and analysis infrastructure developed for
+21cm experiments at higher redshifts.
+
+The hardware design will borrow heavily from the Precision Array for Probing the Epoch
+of Reionization (PAPER) and the Murchsion Widefield Array (MWA), 
+using a scaled version of the PAPER dipoles as a feed element, tiling dipoles as done by the MWA,
+and modifying the CASPER FPGA/GPU PAPER correlator to perform full
+dual-polarization cross-correlations of all elements.  Significant improvements to the
+system temperature will be brought about through state-of-the-art uncooled, 
+low-noise amplifiers.  Relative to PAPER, the collecting area will be substantially
+increased through the use of tiles of 4 dipoles combined through a beamformer, as demonstrated
+by MWA efforts.  Although we have largely avoided specific cost-estimates, it is fair to say that
+this infrastructure is obtainable at a fraction of the cost of the $\sim100$-million dollar 
+ground-based optical redshift surveys.
+
+On the analysis side, BAOBAB will use the maximum redundancy
+configurations and delay spectrum foreground removal techniques presented in 
+\citet{parsons_et_al_2012a} and \citet{parsons_et_al_2012b} to enhance sensitivity to
+Fourier modes along the line-of-sight.  Motivated by the science of Baryon Acoustic Oscillations,
+BAOBAB will utilize extremely close-packed arrays to maximize the number of short baselines.
+The sensitivity calculations presented here
+show that BAOBAB will achieve several milestone measurements over our anticipated staged deployment
+process.  A $\sim32$-element BAOBAB system will yield high significance detections of the HI power
+spectrum, and constrain the evolution of the cosmic neutral hydrogen fraction from $z = 0.5$ to
+1.5 as well as the bias of DLAs.  Over the same wide redshift range, a $\sim128$-element system will allow for a first detection of the BAO features in the
+power spectrum, and yield errors on $H(z)$ at the several percent level.  When combined
+with our current constraints on dark energy, including those forthcoming from the BOSS and Planck 
+experiments,
+BAOBAB's measurements result in substantial increase in the Dark Energy Task Force Figure of Merit,
+representing constraints on the nature and time evolution of dark energy over a wide range of cosmic history.
+
+\bibliographystyle{apj}
+\bibliography{baobab}{}
+
+%Figures
+
+\begin{figure}\centering
+\includegraphics[width=4.5in]{plots/signal_flow.png}
+\caption{
+System diagram of the BAOBAB interferometer.  Dual-polarization antenna signals
+at -103dBm enter an uncooled low-noise amplifier (LNA) with +12.5dB
+gain and a noise figure of 0.4dB (30K).  Second-stage amplifiers add
++36dB gain before transmission through 30 meters of LMR400 50$\Omega$ cable to
+a central enclosure.  The signal is bandpass filtered (600--900MHz) and
+amplified +40dB to the optimal -22dBm input level for the ADCs.
+Each antenna signal is digitized and channelized in ROACH F-engines, reordered
+in transmission through 
+a 10Gb Ethernet switch, and sent to GPU GTX580 X-engines
+for cross-correlation. Raw visibility data are passed to a host
+computer and written to a RAID storage unit in the MIRIAD UV file format
+for post-processing.
+}
+\label{fig:signal_flow}
+\end{figure}
+
+\begin{figure}\centering
+    \includegraphics[width=2.0in]{plots/leuschner_deploy.jpg}\includegraphics[width=3.0in]{plots/leuschner_fringes.png}
+    \caption{On the left: Leuschner Observatory, with a prototype 2-element BAOBAB
+interferometer deployed.  This system was developed and deployed by students as
+part of a {\it Fundamentals of Radio Astronomy} class at UC Berkeley.  On the right:
+solar fringes measured with the BAOBAB-2 prototype at Leuschner.
+}
+\label{fig:leuschner}
+\end{figure}
+
+\begin{figure}\centering
+\includegraphics[width=2.0in]{plots/baobab_ant.jpg}\includegraphics[height=1.75in]{plots/tile.png}
+\caption{
+\emph{Left}: A prototype BAOBAB dipole antenna, designed as a 1/5 scale model of a PAPER dipole.
+\emph{Right}: BAOBAB tile design with 4 dipoles and individual ground-screens.
+}
+\label{fig:element}
+\end{figure}
+
+\begin{figure}\centering
+\includegraphics[height=2.5in]{plots/baobab_amp.jpg}
+\caption{The prototype balun and Hittite HMC617LP3 LNA for BAOBAB.  The amplifier adds +30dB of gain
+with a quoted noise figure of 0.5 dB.}
+\label{fig:balun_rx}
+\end{figure}
+
+\begin{figure}\centering
+\includegraphics[height=3.0in]{plots/roach_gpu_correlator.jpg}
+\caption{
+PAPER's 128-input correlator (shown) follows the packetized frequency--cross-multiply (FX)
+architecture developed by the Center for Astronomy Signal Processing and
+Electronics Research (CASPER).  Shown are 16 ROACH F-engines (left)
+and 2 dual-GPU box X-engines (right).  The first-generation BAOBAB correlator will
+modify the 64-input, 100-MHz PAPER correlator to become a 32-input,
+300-MHz correlator.  It will employ eight ROACH boards for spectral processing
+and four dual-GPU boxes for cross-multiplication.  A 10-GbE switch is used to
+route data between boards.
+} \label{fig:correlator}
+\end{figure}
+
+\begin{figure}\centering
+\includegraphics[width=2.5in]{plots/antpos32min.png}\includegraphics[width=2.5in]{plots/antpos32max.png}
+\caption{BAOBAB array configurations, plotted in meters east-west 
+(horizontal axis) and north-south (vertical axis).  BAOBAB will use above-ground
+cabling to allow antennas to be moved into
+a minimum-redundancy configuration (left) for imaging foregrounds, or
+a maximum-redundancy configuration (right) for enhanced power-spectrum sensitivity.
+Each square represents one tile, and each ``+" one dipole.
+%Made with plot_antpos_nolabel.py
+}
+\label{fig:configuration}
+\end{figure}
+
+\begin{figure}\centering
+\includegraphics[height=2.5in]{plots/21cmps-2.png}\includegraphics[height=2.5in]{plots/21cmdelta-2.png}
+\caption{
+\pvm{Is the power really measured in Mpc while $k$ is measured in Mpc/h? Note
+$\mu=1$ specification. 
+I actually get a factor $\sim 2$ higher power at $\Delta^2$ at 
+$k=0.1$, although
+very similar at $k=0.01$ (I agree on $T_{21}$, to much better accuracy than
+this). What $n$ are you using? $n$ can't explain it though
+because $\sigma_8$ fixes the power on the scales where we disagree. 
+(It would be good to give $n$ in any case.) Unfortunately this kind of 
+power difference makes a pretty big integration time difference.  }
+\emph{Left}: The predicted radial-mode ($\mu=1$) power spectrum of 21cm 
+emission in our fiducial 
+model at three redshifts:
+0.67, 0.89 and 1.18 (corresponding to frequencies of 850, 750 and 650 MHz).  
+The $z = 0.89$ and $z = 1.18$ power spectra overlap, and, effectively, the 
+signal is at the same strength for all 
+redshifts.  Matter power
+spectrum predictions come from CAMB.  \emph{Right}: The equivalent dimensionless power spectra,
+$\Delta^2(k) = \frac{k^3}{2\pi^2}P(k)$.
+%Made with mk_21cmps.py
+} \label{fig:21cmps}
+\end{figure}
+
+\begin{figure}\centering
+\includegraphics[height=4.0in]{plots/sense_wwo_samp_var-2.png}
+\caption{Noise levels for two fiducial observations of one declination range with BAOBAB.  
+The dashed gray (black) line shows
+the sensitivity given thermal noise only for a 30 days observation with a 35-element system
+(180 days with a 132-element system); 
+solid lines show the effect of including sample variance.  
+At the larger scales, the 180 day observation with 132-tiles is completely dominated by sample
+variance.
+At the smaller scales, the analytic expression for thermal noise
+given in equation \ref{eq:noise_pk} accurately reproduces the sensitivity.  The plotted thermal noise
+only curve is not a perfect power-law because longer baselines cannot probe the largest scale
+$k$-modes.  To be more realistic, the foreground model discussed in \S\ref{sec:dspec}
+is used to exclude contaminated modes from the sensitivity calculation.
+%Made with sense_comp.py
+} \label{fig:sense_wwo_samp_var}
+\end{figure}
+
+\begin{figure}\centering
+\includegraphics[height=4in]{plots/baobab32_sense-2.png}
+\caption{Predicted constraints on $z = 0.89$ 21cm power spectrum from a 30 day observation with
+a 35-tile BAOBAB system.  The net result is a $\sim5\sigma$ detection of the
+power spectrum.  Results are comparable in the other 2 redshift bins. 
+%Made with 32_ant_sense.py
+} \label{fig:baobab32_sense}
+\end{figure}
+
+\begin{figure}\centering
+\includegraphics[height=4.0in]{plots/antpos128-2.png}
+\caption{The maximum redundancy configuration of a 132-element BAOBAB system.  The close-packed
+tiles are chosen to produce the shortest possible baselines.
+%Made with plot_antpos_nolabel.py
+} \label{fig:antpos128}
+\end{figure}
+
+\begin{figure}\centering
+\includegraphics[height=4.0in]{plots/baobab128_sense-2.png}
+\caption{Predicted constraints on the $z = 0.89$ BAO features from a 180 day observation
+of three-declination fields with
+a 132-element BAOBAB system.  The net result is a $4\sigma$ detection of the BAO features.  The sensitivity is comparable in the other 2 redshift bins.
+%Made with 128_ant_sense.py
+} \label{fig:baobab128_sense}
+\end{figure}
+
+
+\begin{figure}\centering
+\includegraphics[height=2.5in]{plots/fishmat_nolya.png}\includegraphics[height=2.5in]{plots/fishmat_lya.png}
+\caption{1 and $2\sigma$ error ellipses in the $w_0-w_a$ plane for various surveys.  \emph{Left}: The dotted line shows constraints from Planck, BOSS-LRG and a 5\% error on $H_0$; the solid line shows the effect of including a 1440-hour integration on three independent declination fields with a 132-tile BAOBAB array.  These error ellipses correspond to Figures of Merit of 8.7 and 16.0, respectively.  \emph{Right}: The same as the left panel, but both constraints now include BOSS-Ly$\alpha$ forest measurements.  These error ellipses corresponds to Figures of Merit of 17.8 and 22.5 with and without BAOBAB.  Although the high-redshift measurements from the Ly$\alpha$ forest enhance the constraints on $w_a$, BAOBAB still provides a significant improvement in the overall FoM.}
+%Made with fishmat_v06.py
+\label{fig:fish}
+\end{figure}
+
+\begin{figure}\centering
+\includegraphics[height=4.0in]{plots/fgloss.png}
+\caption{The sampling pattern of BAOBAB-132 in the ($k_{\perp}$-$k_{\parallel}$)-plane.  Modes are 
+marked as either uncontaminated or 
+contaminated by foregrounds using our model of \S\ref{sec:dspec}.
+%Made with 128_ant_sense.py
+} \label{fig:fgloss}
+\end{figure}
+
+\end{document}
+
+
