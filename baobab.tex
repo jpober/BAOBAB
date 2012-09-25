@@ -1231,10 +1231,18 @@ Even when observing a ``cold patch," foregrounds corrupt large scale $k$-modes w
 footprint moving to smaller scales as baseline length increases (\S\ref{sec:dspec}).  If these
 modes could be retrieved, they could significantly increase the volume of Fourier space
 that BAOBAB can probe.  As an upper-limit, we calculate the obtainable power spectrum constraints 
-ignoring all foreground contamination.  The result is that a 1-year observation of
-three independent declination fields
+ignoring all foreground contamination.  The result is that a 1-year observation
+of three independent declination fields
+\pvm{This is 1 year *each*, except really only 8 hours out of 180 days, i.e., 
+8*180 hours, each? To me, it would be clearer to give the total number of hours
+and square degrees in the various example cases, with only a global 
+clarification of the relation of this to declinations and how long it would 
+actually take to accumulate this many hours of observing, but I guess it is 
+debatable. In any case, I would at least sprinkle a few more reminders of what 
+the numbers you give really mean in there. }
 yields a distance scale uncertainty of 1.4\%, an increase of half a percentage 
 point over the same observation including foreground emission.  
+\pvm{Should make clear that this is combined over redshifts (it is, right?)}
 \pvm{When you have a change from like 2\% to 1.5\%, I think it sounds a lot 
 better to call this a ``25\% improvement'', or something like that, than a 
 ``0.5 percentage point'' improvement (especially in other places where one
@@ -1242,11 +1250,19 @@ neither number involved is right there, i.e., the baseline for the change
 isn't obvious, this does not help the reader to
 quickly interpret the importance of the change).}
 In particular, we note that a foreground-free observation yields
-$\lesssim5\%$-level errors on $D_A$.  While
-an analysis of foreground removal techniques is beyond the scope of this work, this result is
+$\lesssim5\%$-level errors on $D_A$.  
+\pvm{Would be better to give actual numbers, i.e., this is a weirdly vague 
+thing to say (I guess it means $\lesssim 5\%$ in all of the different redshift 
+bins and that's why you don't just give 1 number?).}
+While
+an analysis of foreground removal techniques is beyond the scope of this work, 
+this result is
 suggests that foreground removal may be the way to improve constraints on $D_A$.
+\pvm{It seems from Fig. 8 that this result must not be *dramatically* affected 
+by noise. What are some numbers with no foregrounds *and* no noise?}
 
-As an order of magnitude estimate, we can  consider whether a foreground removal or
+As an order of magnitude estimate, we can  consider whether a foreground 
+removal or
 subtraction scheme might be more effective in the BAO band than at EoR frequencies.  At 
 $k\sim0.1~h\rm{Mpc}^{-1}$, the 750-MHz BAO 21cm power spectrum reaches $\sim~3\times10^{-3}~\rm{mK}^2$,
 compared with a peak brightness at EoR frequencies of 150 MHz reaching $\sim~10~\rm{mK}^2$.  
