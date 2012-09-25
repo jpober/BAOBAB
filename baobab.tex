@@ -48,7 +48,7 @@ calculations of the power spectrum sensitivity for various array sizes,
 with a 35-element array measuring the cosmic neutral hydrogen 
 fraction as a function of redshift, 
 and a 132-element system detecting the BAO features in the power spectrum,
-yielding errors on $H(z)$ at the several percent level and, in turn, significant
+yielding a $\sim2\%$ error on the $z\sim1$ distance scale, and, in turn, significant
 improvements to constraints on the dark energy equation of state over an
 unprecedented range of redshifts from $\sim~0.5-1.5$.
 \end{abstract}
@@ -562,7 +562,9 @@ angular diameter distance around $z\sim1$, we can write:
 \label{eq:X_approx}
     X\approx 1700 (1+z) \frac{\rm Mpc}{\rm radian}.
 \end{equation}
-Note that although we use this (admittedly somewhat poor) approximation to derive the relations for thermal noise
+Note that although we use this (admittedly somewhat poor) approximation 
+for simplicity
+in deriving the relations for thermal noise
 power spectra in this subsection, all the subsequent results include the full $z$-dependence of the
 angular diameter distance.
 
@@ -591,7 +593,7 @@ Since $\nu(1+z)=\nu_{21}$, we have that $dz/(1+z)=-d\nu/\nu$, so
 \end{equation}
 Evaluating the above numerically, we get
 \begin{equation}
-    Y \= 3.0\frac{(1+z)^2}{\sqrt{\Omega_{\rm M}(1+z)^3+\Omega_\Lambda}}\ \frac{\rm Mpc}{\rm MHz}.
+    Y = 3.0\frac{(1+z)^2}{\sqrt{\Omega_{\rm M}(1+z)^3+\Omega_\Lambda}}\ \frac{\rm Mpc}{\rm MHz}.
 \end{equation}
 Finally, we compute the product $X^2Y$ used in equation \ref{eq:single_baseline_sensitivity}:
 \begin{equation}
@@ -1014,10 +1016,12 @@ The particularly poor constraints on $D_A$ come from the loss of modes due to fo
 we further explore the effects of our foreground model in \S\ref{sec:shortcomings}.
 Taking
 correlations between $H(z)$ and $D_A$ into account, these measurements amount to $2.5\%$ to $4.5\%$
-errors on a ``dilation factor," which scales $D_A$ and $H^{-1}(z)$ in proportion.
+errors on a ``dilation factor," which scales $D_A$ and $H^{-1}(z)$ in proportion.  Expressed
+as a single constraint on the $z \sim 1$ distance scale, these measurements correspond to a
+dilation factor error of $1.9\%$.
 The exact uncertainties are given in Table \ref{tab:constraints}.
 
-\begin{table}[ht]\centering
+\begin{table*}[ht]\centering
 \caption{Percent errors on the distance scale from BAO measurements,  
 for a three declination BAOBAB survey.
 The correlation is the correlation coefficient between the $H(z)$ and $D_A$ measurements.  
@@ -1029,21 +1033,21 @@ BOSS-LRG constraints come from
 \begin{tabular}{l|ccccc}
 Survey & Redshift & $H(z)$ Error & $D_A$ Error & Correlation & $D_V$ Error\\
 \hline\hline
-BAOBAB & 0.67 & 9.6\% & 18.6\% & 0.72 & \\
-BAOBAB & 0.89 & 6.7\% & 18.4\% & 0.74 & \\
-BAOBAB & 1.18 & 4.9\% & 17.9\% & 0.74 & \\
+BAOBAB & 0.67 & 9.6\% & 18.6\% & 0.72 & 4.7\% \\
+BAOBAB & 0.89 & 6.7\% & 18.4\% & 0.74 & 3.5\% \\
+BAOBAB & 1.18 & 4.9\% & 17.9\% & 0.74 & 2.7\% \\
 \hline
-BOSS-LRG & 0.35 & 1.8\% & 1.0\% & 0.41 & \\
-BOSS-LRG & 0.6 & 1.7\% & 1.0\% & 0.41 & \\
+BOSS-LRG & 0.35 & 1.8\% & 1.0\% & 0.41 & 0.7\% \\
+BOSS-LRG & 0.6 & 1.7\% & 1.0\% & 0.41 & 0.7\% \\
 \hline
-BOSS-Ly$\alpha$ & 2.57 & 3.1\% & 7.9\% & 0.58 & \\
+BOSS-Ly$\alpha$ & 2.57 & 3.1\% & 7.9\% & 0.58 & 2.0\% \\
 %BOSS-Ly$\alpha$ & 2.09 & 6.7\% & 17\% & 0.58 \\
 %BOSS-Ly$\alpha$ & 2.41 & 4.8\% & 11\% & 0.58 \\
 %BOSS-Ly$\alpha$ & 2.72 & 6.3\% & 18\% & 0.59 \\
 %BOSS-Ly$\alpha$ & 3.04 & 8.6\% & 29\% & 0.56 \\
 \end{tabular}
 \label{tab:constraints}
-\end{table}
+\end{table*}
 
 It is also straightforward to propagate these errors on $H(z)$ and $D_A$ into errors on underlying
 cosmological parameters through the Fisher matrix formalism of equation \ref{eq:fish}.
@@ -1144,7 +1148,7 @@ contaminated by foregrounds using our model of \S\ref{sec:dspec}.
 } \label{fig:fgloss}
 \end{figure}
 Foreground
-contamination effectively excludes modes where $k_{\perp} << k_{\parallel}$, i.e., transverse
+contamination effectively excludes modes where $k_{\perp} \lesssim k_{\parallel}$, i.e., transverse
 modes.  This has the effect of significantly degrading the achievable constraints on $D_A$.
 
 While our foreground model presented in \S\ref{sec:dspec} is empirically motivated, 
@@ -1159,13 +1163,12 @@ This has the effect of moving the cutoff between contaminated and uncontaminated
 \ref{fig:fgloss} up or down by $0.01~h{\rm Mpc}^{-1}$.
 
 The effect of increasing this term (i.e., if foreground emission is not as spectrally smooth as 
-predicted) is to degrade the significance of our BAO detections by $\sim 0.5\sigma$, our $H(z)$
-and $D_A$ constraints by $\sim1$ and $\sim5$ percentage points, respectively, 
-and our Figure of Merit by 0.5.
+predicted) is to degrade the significance of our BAO detections in each of the redshift bins by $\sim 0.5\sigma$, our $H(z)$,
+$D_A$, and $R$ constraints by $\sim1$, $\sim5$, and $\sim0.5-1$ percentage points, respectively.
 Reducing the foreground emission footprint in $k$-space (i.e., if foregrounds are spectrally
 smoother than predicted) has similar effects with the opposite sign: the significance of
-our BAO detections are increased by $\sim 0.5\sigma$, our $H(z)$ and $D_A$ constraints are improved
-by $\sim0.5$ and $\sim6$ percentage points, respectively, and our FoM is increased by 0.5.  From this analysis, it is clear
+our BAO detections in each band are increased by $\sim 0.5\sigma$, our $H(z)$, $D_A$, and $R$ constraints are improved
+by $\sim0.5$, $\sim6$, and $\sim0.5$ percentage points, respectively.  From this analysis, it is clear
 that foreground emission can significantly alter the achievable constraints on $D_A$, but 
 ultimately, the success of BAOBAB will not be determined by the details of foreground spectral
 properties.
@@ -1189,12 +1192,12 @@ As an upper-limit to the constraints obtainable with a single-declination, $\sim
 fields)
 we compute the results of a completely sample variance limited survey, i.e., one where thermal noise
 uncertainties have been set to 0 (although modes are still excluded using our foreground
-emission model).  Using the BOSS-LRG, BOSS-Ly$\alpha$ Forest, Planck and 5\% $H_0$
-constraint as our baseline with a Figure of Merit of 18, the addition of a sample variance
-limited 132-tile BAOBAB observation increases the FoM to 22.4 (compared with 22.5 for our
+emission model).   
+This sample variance
+limited 132-tile BAOBAB observation yields a $z\sim1$ distance scale uncertainty of $\sim1.8\%$ (compared with $1.9\%$ for our
 fiducial 1-year observation of 3 independent declination fields).  
 For comparison, a 10-year (14,400 hour), one declination observation with the same
-array yields only a Figure of Merit of 21.2 (including the same baseline experiments).
+array yields a distance scale uncertainty of $2.2\%$.
 Therefore, while better constraints can come from a longer observation, obtaining measurements of 
 new modes to beat down sample variance is clearly the optimal way to proceed.  There are two ways
 forward to achieve this goal: map a different volume of the universe (as with our fiducial 
@@ -1226,8 +1229,7 @@ modes could be retrieved, they could significantly increase the volume of Fourie
 that BAOBAB can probe.  As an upper-limit, we calculate the obtainable power spectrum constraints 
 ignoring all foreground contamination.  The result is that a 1-year observation of
 three independent declination fields
-(again including our fiducial baseline experiments with a Figure of Merit of 18) yields a Figure
-of Merit of 23.5, an increase of 1 from the same observation including foreground emission.  
+yields a distance scale uncertainty of 1.4\%, an increase of half a percentage point over the same observation including foreground emission.  
 In particular, we note that a foreground-free observation yields
 $\lesssim5\%$-level errors on $D_A$.  While
 an analysis of foreground removal techniques is beyond the scope of this work, this result is
@@ -1277,7 +1279,7 @@ show that BAOBAB will achieve several milestone measurements over our anticipate
 process.  A $\sim32$-element BAOBAB system will yield high significance detections of the HI power
 spectrum, and constrain the evolution of the cosmic neutral hydrogen fraction from $z = 0.5$ to
 1.5 as well as the bias of DLAs.  Over the same wide redshift range, a $\sim128$-element system will allow for a first detection of the BAO features in the
-power spectrum, and yield errors on $H(z)$ at the several percent level.  When combined
+power spectrum, and yield errors on the distance scale $R$ at the several percent level.  When combined
 with our current constraints on dark energy, including those forthcoming from the BOSS and Planck 
 experiments,
 BAOBAB's measurements result in substantial increase in the Dark Energy Task Force Figure of Merit,
