@@ -2,6 +2,8 @@
 \usepackage{amsmath}
 \pdfoutput=1
 
+\def\pvm#1{[PM: {\it #1}] }
+
 \begin{document}
 
 \submitted{Submitted to AJ: 20 Sep 2012}
@@ -474,10 +476,15 @@ at redshifts of 0.67, 0.89 and 1.18 (corresponding to frequencies of 850,
 \includegraphics[width=2.5in]{21cmps-2.png}
 \includegraphics[width=2.5in]{21cmdelta-2.png}
 \caption{
-\emph{Top}: The predicted power spectrum of 21cm emission in our fiducial model at three redshifts:
-0.67, 0.89 and 1.18 (corresponding to frequencies of 850, 750 and 650 MHz).  The $z = 0.89$ and $z = 1.18$ power spectra overlap, and, effectively, the signal is at the same strength for all three  
+\emph{Top}: The predicted real space (i.e., $\mu=0$) power spectrum of 21cm 
+emission in our fiducial model
+at three redshifts:
+0.67, 0.89 and 1.18 (corresponding to frequencies of 850, 750 and 650 MHz).  
+The $z = 0.89$ and $z = 1.18$ power spectra overlap, and, effectively, the 
+signal is at the same strength for all three  
 redshifts.  Matter power
-spectrum predictions come from CAMB.  \emph{Bottom}: The equivalent dimensionless power spectra,
+spectrum predictions come from CAMB.  \emph{Bottom}: The equivalent 
+dimensionless power spectra,
 $\Delta^2(k) = \frac{k^3}{2\pi^2}P(k)$.
 %Made with mk_21cmps.py
 } \label{fig:21cmps}
@@ -1226,7 +1233,14 @@ modes could be retrieved, they could significantly increase the volume of Fourie
 that BAOBAB can probe.  As an upper-limit, we calculate the obtainable power spectrum constraints 
 ignoring all foreground contamination.  The result is that a 1-year observation of
 three independent declination fields
-yields a distance scale uncertainty of 1.4\%, an increase of half a percentage point over the same observation including foreground emission.  
+yields a distance scale uncertainty of 1.4\%, an increase of half a percentage 
+point over the same observation including foreground emission.  
+\pvm{When you have a change from like 2\% to 1.5\%, I think it sounds a lot 
+better to call this a ``25\% improvement'', or something like that, than a 
+``0.5 percentage point'' improvement (especially in other places where one
+neither number involved is right there, i.e., the baseline for the change 
+isn't obvious, this does not help the reader to
+quickly interpret the importance of the change).}
 In particular, we note that a foreground-free observation yields
 $\lesssim5\%$-level errors on $D_A$.  While
 an analysis of foreground removal techniques is beyond the scope of this work, this result is
