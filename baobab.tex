@@ -122,10 +122,8 @@ universe.
 Furthermore, a 21cm intensity mapping experiment can probe redshifts $z > 0.5$ 
 with roughly uniform sensitivity,
 without complications arising from sky emission lines in the optical/near-infrared.
-On the largest physical scales ($k<0.25~h{\rm Mpc}^{-1}$ at $z\sim 1$) where BAO
-features in the matter power spectrum have not been significantly modified by
-non-linear growth, the 21cm signal can be used to constrain the location of the
-three principal BAO peaks as a function of redshift, and thereby measure
+The 21cm signal can be used to constrain the location of the
+BAO peaks as a function of redshift, and thereby measure
 the magnitude and time-evolution of dark energy.
 
 21cm BAO experiments can draw on the considerable investments in
@@ -564,11 +562,11 @@ angular diameter distance around $z\sim1$, we can write:
 \label{eq:X_approx}
     X\approx 1700 (1+z) \frac{\rm Mpc}{\rm radian}.
 \end{equation}
-Note that although we use this approximation to derive the relations for thermal noise
+Note that although we use this (admittedly somewhat poor) approximation to derive the relations for thermal noise
 power spectra in this subsection, all the subsequent results include the full $z$-dependence of the
 angular diameter distance.
 
-A few more words are warranted concerning the magnitude of $X$ at $z=1$.  Given the scaling of equation \ref{eq:X_approx},
+A few more words are warranted concerning the magnitude of $X$ at $z=1$.  Given the scaling of equation \ref{eq:X},
 a $16\lambda$-baseline (6.8m a $z=1$) corresponds to a transverse wavemode of 
 $k_\perp = 0.042~h\rm{Mpc}^{-1}$, a non-negligible value compared to the first BAO peak at 
 $\sim 0.08~h\rm{Mpc}^{-1}$.  Therefore, baselines longer than $\sim 32\lambda$ will 
@@ -593,7 +591,7 @@ Since $\nu(1+z)=\nu_{21}$, we have that $dz/(1+z)=-d\nu/\nu$, so
 \end{equation}
 Evaluating the above numerically, we get
 \begin{equation}
-    Y\approx3.0\frac{(1+z)^2}{\sqrt{\Omega_{\rm M}(1+z)^3+\Omega_\Lambda}}\ \frac{\rm Mpc}{\rm MHz}.
+    Y \= 3.0\frac{(1+z)^2}{\sqrt{\Omega_{\rm M}(1+z)^3+\Omega_\Lambda}}\ \frac{\rm Mpc}{\rm MHz}.
 \end{equation}
 Finally, we compute the product $X^2Y$ used in equation \ref{eq:single_baseline_sensitivity}:
 \begin{equation}
@@ -713,7 +711,10 @@ that can be calculated by combining the errors on each separate mode in inverse-
 where $\delta\Delta^2(k)$ is the resultant uncertainty on a given $k$-mode, $\Delta^2_{\rm N}$ 
 is the thermal noise power spectrum calculated in \ref{sec:thermal_noise}, $\Delta^2_{21}(k)$
 is the cosmological 21cm power spectrum (which is also the sample variance error), and $i$
-is an index labeling the independent $k$-modes over which we are summing.
+is an index labeling the independent $k$-modes over which we are summing
+(note that we never combine modes into bands with significantly varying 
+$\mathbf{k}$, which is why we can sum inverse absolute variance instead of 
+inverse fractional variance).
 
 Since the sample variance is completely a function of the $uv$-coverage of an array,
 it is best calculated
@@ -896,12 +897,14 @@ Measurements of this significance will allow for an accurate determination of $f
 the combination of the cosmic neutral
 hydrogen fraction and the bias of neutral hydrogen containing regions, as a function of redshift.  Breaking the degeneracy between these parameters will require
 additional information.  Measuring redshift-space distortions can, in principle,
-separate the effects of the two terms. 
+separate the effects of the two terms.
 Constraints from a longer integration or a system with $\sim 64$ elements
-will further improve constraints on the neutral hydrogen power spectrum, and it may be possible
-for these systems to measure redshift-space distortion effects.  Measuring these effects may
-warrant different configurations and observing strategies, so we postpone an exploration of
-this science to a future work.
+will further improve constraints on the neutral hydrogen power spectrum, and it will be possible
+for these systems to measure redshift-space distortion effects.  
+Measuring 
+these effects accurately requires more careful systematic control, which may
+warrant different configurations and observing strategies, so we postpone an 
+exploration of this science to a future work (see, e.g., \citealt{masui_et_al_2010}).
 
 \subsection{Detecting Baryon Acoustic Oscillations}
 \label{sec:baobab128}
@@ -918,7 +921,9 @@ tiles are chosen to produce the shortest possible baselines.
 \end{figure}
 This observation yields a $2.9\sigma$ detection of the BAO features at $z = 1.18$, 
 with effective $1.7-$ and $2.3\sigma$ non-detections at the $z = 0.67$ and $z = 0.89$ bands,
-respectively.
+respectively, where we have isolated the BAO features from the broad-band shape of the
+power spectrum by removing a model fit using the transfer function from
+\citet{eisenstein_and_hu_1998}.
 The effect of sample variance is most dominant at the lower redshifts, 
 because the angular diameter distance scaling means that fewer samples of the BAO scale can be
 found in the same area of sky (this observation of 8-independent fields with a
@@ -943,9 +948,9 @@ simplest approach might be to build three 132-tile BAOBAB arrays, each tilted to
 declination; this would also yield the subsequently predicted sensitivities in only one season of
 observing.  Note that for BAO science these independent configurations are more desirable than
 an array with a larger number of fully correlated tiles.  Since we are using a close-packed
-configuration, the addition of more tiles can only yield new modes at corresponding larger $k_{\perp}$
-scales, where the amount of BAO information is significantly diminished.  It may be possible
-that more information could be recovered from these larger scale modes using a reconstruction
+configuration, the addition of more tiles can only yield new modes at corresponding larger $k_{\perp}$ 
+where the amount of BAO information is significantly diminished.  It may be possible
+that more information could be recovered from these larger $k$ modes using a reconstruction
 method (e.g. \citealt{eisenstein_et_al_2007}, \citealt{padmanabhan_et_al_2009},
 \citealt{noh_et_al_2009}), but we do not explore this option in this work.  In \S\ref{sec:improving},
 we discuss other ways to increase the survey footprint and futher reduce the effect of sample
@@ -995,13 +1000,16 @@ For our calculations, we exclude $k$-modes deemed contaminated by our foreground
 model of \S\ref{sec:dspec}.  We also model the nonlinear degeneration of higher $k$-modes
 using the elliptical Gaussian formula from \citet{seo_and_eisenstein_2007}.
 To isolate the constraints provided by the BAO features from the broad-band shape of the
-power spectrum, we remove a model fit using the transfer function from
+power spectrum, we again remove a model fit using the transfer function from
 \citet{eisenstein_and_hu_1998}.  We split our data into three redshift bins centered at 
 $z = 0.67,0.89$ and 1.18.  Although our frequency coverage is continuous between 
 $z = 0.58$ and 1.37, we find that there is minimal penalty for using only three bins in a Fisher matrix
 study.  The result of this calculation is that our fiducial 3-declination, 180-day 
 integration yields measurements of 
-$H(z)$ with an error ranging from 10\% to 5\% across our three redshift bins, from low to high redshift, and measurements of $D_A$ with errors effectively constant at 18\% over the same range.  
+$H(z)$ with an error ranging from 10\% to 5\% across our three redshift bins, from low to high redshift, and measurements of $D_A$ with errors effectively constant at 18\% over the same range
+(note that errors $\gtrsim 5$\% should
+be understood in the usual formal Fisher matrix sense -- these measurements
+would not correspond to significant detections, taken in isolation).  
 The particularly poor constraints on $D_A$ come from the loss of modes due to foreground emission;
 we further explore the effects of our foreground model in \S\ref{sec:shortcomings}.
 Taking
@@ -1010,23 +1018,29 @@ errors on a ``dilation factor," which scales $D_A$ and $H^{-1}(z)$ in proportion
 The exact uncertainties are given in Table \ref{tab:constraints}.
 
 \begin{table}[ht]\centering
-\caption{Percent errors on the distance scale from BAO measurements.  The correlation is the correlation coefficient between the $H(z)$ and $D_A$ measurements.  BOSS-LRG constraints come from
+\caption{Percent errors on the distance scale from BAO measurements,  
+for a three declination BAOBAB survey.
+The correlation is the correlation coefficient between the $H(z)$ and $D_A$ measurements.  
+$D_V$ is the ``dilation factor," a single estimate of
+the distance scale which scales $D_A$ and $H^{-1}(z)$ in proportion.
+BOSS-LRG constraints come from
 \citet{schlegel_et_al_2009} and BOSS-Ly$\alpha$ Forest constraints come from the method of
 \citet{mcdonald_and_eisenstein_2007} and \citet{dawson_et_al_2012}.}
-\begin{tabular}{l|cccc}
-Survey & Redshift & $H(z)$ Error & $D_A$ Error & Correlation\\
+\begin{tabular}{l|ccccc}
+Survey & Redshift & $H(z)$ Error & $D_A$ Error & Correlation & $D_V$ Error\\
 \hline\hline
-BAOBAB & 0.67 & 9.6\% & 18.6\% & 0.72 \\
-BAOBAB & 0.89 & 6.7\% & 18.4\% & 0.74 \\
-BAOBAB & 1.18 & 4.9\% & 17.9\% & 0.74 \\
+BAOBAB & 0.67 & 9.6\% & 18.6\% & 0.72 & \\
+BAOBAB & 0.89 & 6.7\% & 18.4\% & 0.74 & \\
+BAOBAB & 1.18 & 4.9\% & 17.9\% & 0.74 & \\
 \hline
-BOSS-LRG & 0.35 & 1.8\% & 1.0\% & 0.41 \\
-BOSS-LRG & 0.6 & 1.7\% & 1.0\% & 0.41 \\
+BOSS-LRG & 0.35 & 1.8\% & 1.0\% & 0.41 & \\
+BOSS-LRG & 0.6 & 1.7\% & 1.0\% & 0.41 & \\
 \hline
-BOSS-Ly$\alpha$ & 2.09 & 6.7\% & 17\% & 0.58 \\
-BOSS-Ly$\alpha$ & 2.41 & 4.8\% & 11\% & 0.58 \\
-BOSS-Ly$\alpha$ & 2.72 & 6.3\% & 18\% & 0.59 \\
-BOSS-Ly$\alpha$ & 3.04 & 8.6\% & 29\% & 0.56 \\
+BOSS-Ly$\alpha$ & 2.57 & 3.1\% & 7.9\% & 0.58 & \\
+%BOSS-Ly$\alpha$ & 2.09 & 6.7\% & 17\% & 0.58 \\
+%BOSS-Ly$\alpha$ & 2.41 & 4.8\% & 11\% & 0.58 \\
+%BOSS-Ly$\alpha$ & 2.72 & 6.3\% & 18\% & 0.59 \\
+%BOSS-Ly$\alpha$ & 3.04 & 8.6\% & 29\% & 0.56 \\
 \end{tabular}
 \label{tab:constraints}
 \end{table}
@@ -1193,16 +1207,6 @@ a primary beam full-width half-max of $\sim 15^{\circ}$, there are $\sim10$ inde
 in declination that BAOBAB can target.  Since our fiducial observation already targets three
 declination fields, mapping every declination could in principle yield $\sim70\%$ reductions
 in the error bars over the results presented. 
-
-One might think that BAOBAB could obtain measurements of more independent modes by increasing its
-$k$-space resolution.  In fact, this proposition ends up being a no-win situation.  To increase
-resolution in $k_{\perp}$, BAOBAB would need to use smaller dishes/tiles.  However, with smaller
-elements comes a larger field-of-view, meaning fewer independent patches of sky can be observed
-per day.  The net effect is that there no gain from smaller elements, while the noise level
-per integration will increase (equation \ref{eq:single_baseline_sensitivity}).  Similarly, one
-might want to improve resolution in $k_{\parallel}$, which will result from a larger bandwidth.
-However, there is a limit to amount of bandwidth that can be processed simultaneously,
-as the universe will evolve over the cosmic time probed by a large bandwidth.
 
 The other way to potentially measure new modes and beat down sample variance is to recover samples
 we have considered corrupted by foregrounds.  There are two ways foregrounds compromise BAOBAB
@@ -1444,6 +1448,10 @@ representing constraints on the nature and time evolution of dark energy over a 
 \bibitem[{{Madau} {et~al.}(1997){Madau}, {Meiksin}, \&
   {Rees}}]{madau_et_al_1997}
 {Madau}, P., {Meiksin}, A., \& {Rees}, M.~J. 1997, \apj, 475, 429
+
+\bibitem[{{Masui} {et~al.}{2010}{Masui}, {McDonald}, \&
+  {Pen}}]{masui_et_al_2010}
+{Masui}, K.~W., {McDonald}, P., \&{Pen}, U.-L. 2010, \prd, 81, 103527
 
 \bibitem[{{McDonald} \& {Eisenstein}(2007)}]{mcdonald_and_eisenstein_2007}
 {McDonald}, P., \& {Eisenstein}, D.~J. 2007, \prd, 76, 063009
