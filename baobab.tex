@@ -51,7 +51,7 @@ calculations of the power spectrum sensitivity for various array sizes,
 with a 35-element array measuring the cosmic neutral hydrogen 
 fraction as a function of redshift, 
 and a 132-element system detecting the BAO features in the power spectrum,
-yielding a $\sim2\%$ error on the $z\sim1$ distance scale, and, in turn, significant
+yielding a $1.8\%$ error on the $z\sim1$ distance scale, and, in turn, significant
 improvements to constraints on the dark energy equation of state over an
 unprecedented range of redshifts from $\sim~0.5-1.5$.
 \end{abstract}
@@ -887,11 +887,11 @@ power spectrum.  Results are comparable in the other 2 redshift bins.
 } \label{fig:baobab32_sense}
 \end{figure}
 These observations assume a 100-MHz
-bandwidth centered on 750 MHz ($z = 0.89$).  The net result is an $5.4\sigma$ detection of
+bandwidth centered on 750 MHz ($z = 0.89$).  The net result is an $5.6\sigma$ detection of
 the 21cm power spectrum when our model for foreground emission from \S\ref{sec:dspec}
 is used to exclude contaminated modes.  
 Results for bands centered on $650~(z = 1.18)$ and 850 MHz $(z = 0.67)$
-are similar, yielding $5.7\sigma$ and $5.0\sigma$ detections, respectively.
+are similar, yielding $5.8\sigma$ and $5.0\sigma$ detections, respectively.
 The lower
 significance detection at the lowest redshifts results from the scaling of the angular diameter
 distance; at redshift $z = 0.67$, a $16\lambda$ baseline corresponds to a $k_{\perp}$ wavemode
@@ -929,8 +929,8 @@ tiles are chosen to produce the shortest possible baselines.
 %Made with plot_antpos_nolabel.py
 } \label{fig:antpos128}
 \end{figure}
-This observation yields a $2.9\sigma$ detection of the BAO features at $z = 1.18$, 
-with effective $1.7-$ and $2.3\sigma$ non-detections at the $z = 0.67$ and $z = 0.89$ bands,
+This observation yields a $3.3\sigma$ detection of the BAO features at $z = 1.18$, 
+with effective $2.1-$ and $2.7\sigma$ non-detections at the $z = 0.67$ and $z = 0.89$ bands,
 respectively, where we have isolated the BAO features from the broad-band shape of the
 power spectrum by removing a model fit using the transfer function from
 \citet{eisenstein_and_hu_1998}.
@@ -956,13 +956,18 @@ could in principle achieve similar sensitivities with only one year of observing
 at the expense of additional degrees of complexity in the system.  If funding permits, the 
 simplest approach might be to build three 132-tile BAOBAB arrays, each tilted towards a different
 declination; this would also yield the subsequently predicted sensitivities in only one season of
-observing.  Note that for BAO science these independent configurations are more desirable than
+observing.  Note that for BAO science these independent configurations are
+potentially more desirable than
 an array with a larger number of fully correlated tiles.  Since we are using a close-packed
 configuration, the addition of more tiles can only yield new modes at corresponding larger $k_{\perp}$ 
 where the amount of BAO information is significantly diminished.  It may be possible
 that more information could be recovered from these larger $k$ modes using a reconstruction
 method (e.g. \citealt{eisenstein_et_al_2007}, \citealt{padmanabhan_et_al_2009},
-\citealt{noh_et_al_2009}), but we do not explore this option in this work.  In \S\ref{sec:improving},
+\citealt{noh_et_al_2009}), but we do not explore this option in this work.  
+If there is significant BAO information beyond $k \sim 0.2$, then a $\sim 256$-tile array could
+possibly yield tighter constraints than two 132-tile arrays observing for the same
+amount of time.
+In \S\ref{sec:improving},
 we discuss other ways to increase the survey footprint and futher reduce the effect of sample
 variance.
 
@@ -974,13 +979,13 @@ of \citet{eisenstein_and_hu_1998}, which neglects BAO.
 \includegraphics[width=3.5in]{baobab128_sense-2.png}
 \caption{Predicted constraints on the $z = 0.89$ BAO features from a 180 day observation
 of three-declination fields with
-a 132-element BAOBAB system.  The net result is a $4\sigma$ detection of the BAO features.  The sensitivity is comparable in the other 2 redshift bins.
+a 132-element BAOBAB system.  The net result is a $4.7\sigma$ detection of the BAO features.  The sensitivity is comparable in the other 2 redshift bins.
 %Made with 128_ant_sense.py
 } \label{fig:baobab128_sense}
 \end{figure}
 The measurements from a 180-day integration at each declination range with this array 
-amount to an 4$\sigma$ detection of these features.  Results are similar
-for the other redshift bins, with expected 3$\sigma$ and 5$\sigma$ detections at redshifts of 
+amount to an 4.7$\sigma$ detection of these features.  Results are similar
+for the other redshift bins, with expected 3.6$\sigma$ and 5.7$\sigma$ detections at redshifts of 
 0.67 and 1.18, respectively.  While it is clear from Figure \ref{fig:sense_wwo_samp_var} that
 sample variance dominates the errors on the largest scale modes after 180 days of observing
 one declination range, we find the additional sensitivity towards the higher BAO peaks with this
@@ -1016,7 +1021,7 @@ $z = 0.67,0.89$ and 1.18.  Although our frequency coverage is continuous between
 $z = 0.58$ and 1.37, we find that there is minimal penalty for using only three bins in a Fisher matrix
 study.  The result of this calculation is that our fiducial 3-declination, 180-day 
 integration yields measurements of 
-$H(z)$ with an error ranging from 10\% to 5\% across our three redshift bins, from low to high redshift, and measurements of $D_A$ with errors effectively constant at 18\% over the same range
+$H(z)$ with an error ranging from 9\% to 4.5\% across our three redshift bins, from low to high redshift, and measurements of $D_A$ with errors effectively constant at 17\% over the same range
 (note that errors $\gtrsim 5$\% should
 be understood in the usual formal Fisher matrix sense -- these measurements
 would not correspond to significant detections, taken in isolation).  
@@ -1026,7 +1031,7 @@ Taking
 correlations between $H(z)$ and $D_A$ into account, these measurements amount to $2.5\%$ to $4.5\%$
 errors on a ``dilation factor," which scales $D_A$ and $H^{-1}(z)$ in proportion.  Expressed
 as a single constraint on the $z \sim 1$ distance scale, these measurements correspond to a
-dilation factor error of $1.9\%$.
+dilation factor error of $1.8\%$.
 The exact uncertainties are given in Table \ref{tab:constraints}.
 
 \begin{table*}[ht]\centering
@@ -1041,9 +1046,9 @@ BOSS-LRG constraints come from
 \begin{tabular}{l|ccccc}
 Survey & Redshift & $H(z)$ Error & $D_A$ Error & Correlation & $R$ Error\\
 \hline\hline
-BAOBAB & 0.67 & 9.6\% & 18.6\% & 0.72 & 4.7\% \\
-BAOBAB & 0.89 & 6.7\% & 18.4\% & 0.74 & 3.5\% \\
-BAOBAB & 1.18 & 4.9\% & 17.9\% & 0.74 & 2.7\% \\
+BAOBAB & 0.67 & 8.9\% & 17.1\% & 0.71 & 4.4\% \\
+BAOBAB & 0.89 & 6.1\% & 16.4\% & 0.72 & 3.3\% \\
+BAOBAB & 1.18 & 4.5\% & 17.5\% & 0.73 & 2.6\% \\
 \hline
 BOSS-LRG & 0.35 & 1.8\% & 1.0\% & 0.41 & 0.7\% \\
 BOSS-LRG & 0.6 & 1.7\% & 1.0\% & 0.41 & 0.7\% \\
@@ -1087,16 +1092,16 @@ we use the JDEM FoMSWG predictions for the Planck satellite, combined with const
 BOSS-LRG survey listed in Table \ref{tab:constraints} and a 5\% error on $H_0$.  
 This combination of experiments yields an FoM
 of 8.7.  Including the measurements from our fiducial BAOBAB observation increases this
-FoM value to 16.0.  This FoM
+FoM value to 16.6.  This FoM
 shows that the high-redshift constraints from BAOBAB can significantly improve our current
 measurements of the dark energy equation of state.  If we include the Ly$\alpha$ forest
-survey of BOSS, our baseline constraint FoM becomes 17.8 which is improved to 22.5 with the inclusion
+survey of BOSS, our baseline constraint FoM becomes 17.8 which is improved to 23.0 with the inclusion
 of BAOBAB data.  These constraints are plotted as 1 and 2$\sigma$ error ellipses in Figure
 \ref{fig:fish}.  
 \begin{figure}\centering
 \includegraphics[width=3.5in]{fishmat_nolya.png}
 \includegraphics[width=3.5in]{fishmat_lya.png}
-\caption{1 and $2\sigma$ error ellipses in the $w_0-w_a$ plane for various surveys.  \emph{Top}: The dotted line shows constraints from Planck, BOSS-LRG and a 5\% error on $H_0$; the solid line shows the effect of including a 1440-hour integration on three independent declination fields with a 132-tile BAOBAB array.  These error ellipses correspond to Figures of Merit of 8.7 and 16.0, respectively.  \emph{Bottom}: The same as the left panel, but both constraints now include BOSS-Ly$\alpha$ forest measurements.  These error ellipses corresponds to Figures of Merit of 17.8 and 22.5 with and without BAOBAB.  Although the high-redshift measurements from the Ly$\alpha$ forest enhance the constraints on $w_a$, BAOBAB still provides a significant improvement in the overall FoM.}
+\caption{1 and $2\sigma$ error ellipses in the $w_0-w_a$ plane for various surveys.  \emph{Top}: The dotted line shows constraints from Planck, BOSS-LRG and a 5\% error on $H_0$; the solid line shows the effect of including a 1440-hour integration on three independent declination fields with a 132-tile BAOBAB array.  These error ellipses correspond to Figures of Merit of 8.7 and 16.6, respectively.  \emph{Bottom}: The same as the left panel, but both constraints now include BOSS-Ly$\alpha$ forest measurements.  These error ellipses corresponds to Figures of Merit of 17.8 and 23.0 with and without BAOBAB.  Although the high-redshift measurements from the Ly$\alpha$ forest enhance the constraints on $w_a$, BAOBAB still provides a significant improvement in the overall FoM.}
 %Made with fishmat_v06.py
 \label{fig:fish}
 \end{figure}
@@ -1167,12 +1172,12 @@ This has the effect of moving the cutoff between contaminated and uncontaminated
 \ref{fig:fgloss} up or down by $0.01~h{\rm Mpc}^{-1}$.
 
 The effect of increasing this term (i.e., if foreground emission is not as spectrally smooth as 
-predicted) is to degrade the significance of our BAO detections in each of the redshift bins by $\sim 0.5\sigma$, our $H(z)$,
-$D_A$, and $R$ constraints by $\sim1$, $\sim5$, and $\sim0.5-1$ percentage points, respectively.
+predicted) is to degrade the significance of our BAO detections in each of the redshift bins by $\sim 0.4\sigma$, our $H(z)$,
+$D_A$, and $R$ constraints by $\sim0.5$, $\sim5$, and $\sim0.3$ percentage points, respectively.
 Reducing the foreground emission footprint in $k$-space (i.e., if foregrounds are spectrally
 smoother than predicted) has similar effects with the opposite sign: the significance of
-our BAO detections in each band are increased by $\sim 0.5\sigma$, our $H(z)$, $D_A$, and $R$ constraints are improved
-by $\sim0.5$, $\sim6$, and $\sim0.5$ percentage points, respectively.  From this analysis, it is clear
+our BAO detections in each band are increased by $\sim 0.3\sigma$, our $H(z)$, $D_A$, and $R$ constraints are improved
+by $\sim0.5$, $\sim5$, and $\sim0.3$ percentage points, respectively.  From this analysis, it is clear
 that foreground emission can significantly alter the achievable constraints on $D_A$, but 
 ultimately, the success of BAOBAB will not be determined by the details of foreground spectral
 properties.
@@ -1198,10 +1203,10 @@ we compute the results of a completely sample variance limited survey, i.e., one
 uncertainties have been set to 0 (although modes are still excluded using our foreground
 emission model).   
 This sample variance
-limited 132-tile BAOBAB observation yields a $z\sim1$ distance scale uncertainty of $\sim1.8\%$ (compared with $1.9\%$ for our
+limited 132-tile BAOBAB observation yields distance scale uncertainty of $\sim1.5\%$, averaged over our whole band (compared with $1.8\%$ for our
 fiducial 1-year observation of 3 independent declination fields).  
 For comparison, a 10-year (14,400 hour), one declination observation with the same
-array yields a distance scale uncertainty of $2.2\%$.
+array yields a distance scale uncertainty of $1.9\%$.
 Therefore, while better constraints can come from a longer observation, obtaining measurements of 
 new modes to beat down sample variance is clearly the optimal way to proceed.  There are two ways
 forward to achieve this goal: map a different volume of the universe (as with our fiducial 
@@ -1236,9 +1241,8 @@ in each of three independent declination fields
 yields a distance scale uncertainty of 1.4\% combined over the entire redshift range, an increase of $\sim25\%$
 over the same observation including foreground emission.  
 In particular, we note that a foreground-free observation yields
-errors of XXX, XXX, and XXX\% on $D_A$ at redshifts of 0.67, 0.89 and 1.18, respectively --- 
-a factor of $\sim XXX$ improvement over the predictions for an observation including the effects of foreground emission.
-%XXX real values forthcoming!
+errors of $\sim5\%$ on $D_A$ at redshifts of 0.67, 0.89 and 1.18, respectively --- 
+a factor of $\gtrsim3$ improvement over the predictions for an observation including the effects of foreground emission.
 While
 an analysis of foreground removal techniques is beyond the scope of this work, 
 this result is
