@@ -741,12 +741,17 @@ shown in Figures \ref{fig:configuration} and \ref{fig:antpos128}.
 \begin{figure}\centering
 \includegraphics[width=3.5in]{sense_wwo_samp_var-3.png}
 \caption{Noise levels for two fiducial observations of one declination range 
-with BAOBAB.  
-The dashed gray (black) line shows
+with BAOBAB at z = 0.89.  
+The dashed thin (thick) line shows
 the sensitivity given thermal noise only for a 30 days observation with a 
 35-element system
 (180 days with a 132-element system); 
 solid lines show the effect of including sample variance.  
+We also plot the effect of our foreground model of \S\ref{sec:dspec}; 
+the achievable sensitivity if no modes
+are excluded by foregrounds is shown by the dot-dashed lines.
+The other two curves do include the effects of the foreground model.
+For comparison, we also plot the dimensionless 21cm power spectrum as the thick, gray line.
 At the larger scales, the 180 day observation with 132-tiles is completely 
 dominated by sample
 variance.
@@ -754,28 +759,22 @@ At the smaller scales, the analytic expression for thermal noise
 given in equation \ref{eq:noise_pk} accurately reproduces the sensitivity.  
 The plotted thermal noise
 only curve is not a perfect power-law because longer baselines cannot probe the largest scale
-$k$-modes.  To be more realistic, the foreground model discussed in \S\ref{sec:dspec}
-is used to exclude contaminated modes from the sensitivity calculation, which also affects
-the thermal noise predictions at the largest scale modes.
-\pvm{Give redshift. If it wasn't very much trouble, it could be nice to add 
-a line to this figure that doesn't include foreground cuts (this would 
-immediately tell the reader importance of those). And/or possibly purely 
-sample-variance limited errors for this patch of sky. It would be really nice
-also to have the signal power line (actually it seems like the bottom panel
-of Fig. 7 could be removed in favor of this - all having them separated does
-is force reader to try to flip back and forth to figure out fractional errors). }
-%Made with sense_comp.py
+$k$-modes. 
+%Made with sense_comp_v03.py
 } \label{fig:sense_wwo_samp_var}
 \end{figure}  
 To calculate the sample variance,
-we use the 21cm brightness power spectrum from CAMB, shown in Figure \ref{fig:21cmps}.
+we use the 21cm brightness power spectrum from CAMB, also plotted for comparison.
 At the scale of the first acoustic peak, sample variance has clearly become the dominant source 
 of error for a long integration with 132-elements; we discuss possible methods for improving this
 situation in \S\ref{sec:baobab128} and \S\ref{sec:improving}.  At the smaller scales, however, the analytic functions given in
 the previous section accurately reproduce the array sensitivity.  Note that the thermal noise
 only curve in Figure \ref{fig:sense_wwo_samp_var} is not a perfect power law because not all 
-baselines can probe the largest scales.  Also note that the foreground model discussed in
-\S\ref{sec:dspec} is used to exclude modes from this calculation.
+baselines can probe the largest scales. 
+We also plot the effect of our foreground model of \S\ref{sec:dspec}; 
+the achievable sensitivity if no modes
+are excluded by foregrounds is shown by the dot-dashed lines.
+The other two curves do include the effects of the foreground model.
 
 \subsubsection{Shot Noise}
 \label{sec:shot_noise}
@@ -876,10 +875,9 @@ Instead, we use a single, frequency-independent Gaussian to model the primary be
 BAOBAB tile; the potential effects of a more realistic beam model are discussed in \S\ref{sec:discussion}.
 We find the delay transform confines foregrounds to $k$-modes below a value of 
 $k_{\parallel} = 0.045~h{\rm Mpc}^{-1}$ for baselines of 16 wavelengths.
-\pvm{Is the following ``0.028 Mpc'' really $0.028~h{\rm Mpc}^{-1}$?}
 The $k_{\parallel}$ value for the maximum delay of a 16$\lambda$ baseline at 
 750 MHz (i.e., the 
-horizon limit) is 0.028 Mpc, which that the intrinsic spectral behavior of 
+horizon limit) is $0.028~h{\rm Mpc}^{-1}$, which implies that the intrinsic spectral behavior of 
 foreground emission
 corresponds to a kernel of width $\sim 0.02~h{\rm Mpc}^{-1}$.  
 In this work, our foreground model
@@ -991,10 +989,6 @@ amount of time.
 In \S\ref{sec:improving},
 we discuss other ways to increase the survey footprint and further reduce the effect of sample
 variance.
-\pvm{What about reducing the size of elements in N/S direction, to increase 
-primary beam in that direction, while adding elements to keep the same max k?
-(e.g., figuratively chopping the 2x2 tiles into 2x1 rectangles immediately 
-doubles area coverage...) }
 
 We plot the expected constraints for the three-declination range fiducial 
 BAOBAB observations on
@@ -1121,29 +1115,23 @@ This combination of experiments yields an FoM
 of 8.7.  Including the measurements from our fiducial BAOBAB observation increases this
 FoM value to 16.6.  This FoM
 shows that the high-redshift constraints from BAOBAB can significantly improve our current
-measurements of the dark energy equation of state.  If we include the Ly$\alpha$ forest
-survey of BOSS, our baseline constraint FoM becomes 17.8 which is improved to 23.0 with the inclusion
-of BAOBAB data.  These constraints are plotted as 1 and 2$\sigma$ error ellipses in Figure
+measurements of the dark energy equation of state.  
+These constraints are plotted as 1 and 2$\sigma$ error ellipses in Figure
 \ref{fig:fish}.  
 \begin{figure}\centering
 \includegraphics[width=3.5in]{fishmat_nolya.png}
-\includegraphics[width=3.5in]{fishmat_lya.png}
 \caption{1 and $2\sigma$ error ellipses in the $w_0-w_a$ plane for various 
-surveys.  \emph{Top}: The dotted line shows constraints from Planck, BOSS-LRG 
+surveys.  The dotted line shows constraints from Planck, BOSS-LRG 
 and a 5\% error on $H_0$; the solid line shows the effect of including a 
 1440-hour integration on three independent declination fields with a 132-tile 
 BAOBAB array.  These error ellipses correspond to Figures of Merit of 8.7 and 
-16.6, respectively.  \emph{Bottom}: The same as the left panel, but both 
-constraints now include BOSS-Ly$\alpha$ forest measurements.  These error 
-ellipses corresponds to Figures of Merit of 17.8 and 23.0 with and without 
-BAOBAB.  Although the high-redshift measurements from the Ly$\alpha$ forest 
-enhance the constraints on $w_a$, BAOBAB still provides a significant 
-improvement in the overall FoM. \pvm{I would consider dropping the bottom
-panel, which doesn't help your case (I think for most people it will just make
-``25\% FoM improvement" look more feeble than they might have imagined.)}}
+16.6, respectively.}
 %Made with fishmat_v06.py
 \label{fig:fish}
 \end{figure}
+If we include the Ly$\alpha$ forest
+survey of BOSS, our baseline constraint FoM becomes 17.8 which is improved to 23.0 with the inclusion
+of BAOBAB data.  
 Even when the BOSS-Ly$\alpha$ forest constraints between redshifts 2 and 3 are 
 added, BAOBAB still provides valuable information, serving to increase the FoM by $\sim 25\%$.
 
@@ -1189,15 +1177,12 @@ of BAOBAB-132 at 750 MHz in the ($k_{\perp}$-$k_{\parallel}$)-plane, highlightin
 discarded as contaminated by our foreground model of \S\ref{sec:dspec}.  
 \begin{figure}\centering
 \includegraphics[width=3.5in]{fgloss.png}
-\caption{The sampling pattern of BAOBAB-132 in the 
+\caption{The sampling pattern of BAOBAB-132 at $z = 0.89$ in the 
 ($k_{\perp}$-$k_{\parallel}$)-plane.  Modes are 
 marked as either uncontaminated or 
 contaminated by foregrounds using our model of \S\ref{sec:dspec}.
-\pvm{Should mention why max $k_\perp$ seems to be too high relative to max
-baseline. Might mention how $\mu$ is limited to, e.g., $>0.65$ for 
-$k\sim 0.1$, which helps explain poor $D_A$ measurement and high correlation.
-I would probably make vertical and horizontal axis scales the same to help
-visualization (could drop negative k's, which don't obviously add anything). }
+Foregrounds limit $\mu$ to, e.g., $\gtrsim0.65$ for 
+$k\sim 0.1$, leading to the relatively poor $D_A$ measurement and high correlation.
 %Made with 128_ant_sense.py
 } \label{fig:fgloss}
 \end{figure}
@@ -1263,11 +1248,8 @@ is potentially feasible, as even a 132-tile BAOBAB experiment spans less than 20
 a primary beam full-width half-max of $\sim 15^{\circ}$, there are $\sim10$ 
 independent pointings
 in declination that BAOBAB can target.  
-\pvm{Can it really cover 150 degrees, i.e., almost North to South poles? And
-if only 8 hours of rotation are clean, it seems surprising that so much N/S 
-would be clean...}
 Since our fiducial observation already targets three
-declination fields, mapping every declination could in principle yield 
+declination fields, mapping every declination could in principle yield up to 
 $\sim70\%$ reductions
 in the error bars over the results presented. 
 
